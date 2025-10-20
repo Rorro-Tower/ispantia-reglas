@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPANTIA</title>
+    <!-- BOOTSTRAP 5.3.8 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            /*------ colores tarjeta inmateriales ------*/
+            --in-marco: #6420a6;
+            --in-fondo-gral: #250c45;
+            --in-fondo-osc: #411b6f;
+            --in-fondo-claro: #9e62e6;
+            --in-fondo-foto: #241733;
+            --in-txt-osc: #090704;
+            --in-txt-claro: #ffffff;
+            --in-verde-claro: #42c083;
+            --in-verde-osc: #1c774b;
+            --in-celeste: #4698e5;
+            --in-rojo: #eb2457;
+            --in-amarillo: #e5df46;
+            --in-divisor: #3c1468;
+            /*------ colores tarjetas encarnados ------*/
+            --en-rojo-claro: #cf3500;
+            --en-rojo-osc: #741900;
+            --en-rojo: #b82e00;
+            --en-naranjo-claro: #d75e00;
+            --en-naranjo: #cb5700;
+            --en--naranjo-osc: #a64300;
+            /*------ colores tarjetas monstruos ------*/
+            --mo-marron: #ad580d;
+        }
+
+        /* DRACONIS FONT */
+        @font-face {
+            font-family: 'draconisregular';
+            src: url('fonts/draconis-jrw6b-webfont.woff2') format('woff2'),
+                url('fonts/draconis-jrw6b-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'draconisbold';
+            src: url('fonts/draconisbold-qzxd6-webfont.woff2') format('woff2'),
+                url('fonts/draconisbold-qzxd6-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'draconisbold_italic';
+            src: url('fonts/draconisbolditalic-al8o6-webfont.woff2') format('woff2'),
+                url('fonts/draconisbolditalic-al8o6-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'draconisitalic';
+            src: url('fonts/draconisitalic-vgdjy-webfont.woff2') format('woff2'),
+                url('fonts/draconisitalic-vgdjy-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* DRAGON HUNTER FONT */
+        @font-face {
+            font-family: 'DRAGON HUNTER';
+            src: url('fonts/DragonHunter-9Ynxj.eot');
+            src: url('fonts/DragonHunter-9Ynxj.eot?#iefix') format('embedded-opentype'),
+                url('fonts/DragonHunter-9Ynxj.woff2') format('woff2'),
+                url('fonts/DragonHunter-9Ynxj.woff') format('woff'),
+                url('fonts/DragonHunter-9Ynxj.ttf') format('truetype'),
+                url('fonts/DragonHunter-9Ynxj.svg#DRAGON HUNTER') format('svg');
+        }
+
+        /* Fourth Edition Dings */
+        @font-face {
+            font-family: 'Fourth-Edition Dings';
+            src: url('fonts/FourthEditionDings-82j0.eot');
+            src: url('fonts/FourthEditionDings-82j0.eot?#iefix') format('embedded-opentype'),
+                url('fonts/FourthEditionDings-82j0.woff2') format('woff2'),
+                url('fonts/FourthEditionDings-82j0.woff') format('woff'),
+                url('fonts/FourthEditionDings-82j0.ttf') format('truetype'),
+                url('fonts/FourthEditionDings-82j0.svg#Fourth-Edition Dings') format('svg');
+        }
+
+        /*------ GENERAL ------*/
+        html,
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        body {
+            background-color: var(--in-fondo-gral) !important;
+        }
+
+        h1 {
+            font-family: 'DRAGON HUNTER', sans-serif !important;
+            text-align: center;
+            word-wrap: break-word;
+        }
+
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            font-family: 'draconisregular', sans-serif !important;
+            color: var(--in-txt-claro);
+        }
+
+        h2 {
+            text-align: center;
+            border-bottom: rgba(255, 255, 255, 0.3) solid 1px;
+            padding-bottom: 0.5em;
+            margin-bottom: 1em;
+        }
+
+        ul li {
+            font-family: 'draconisregular', sans-serif !important;
+            color: var(--in-txt-claro);
+        }
+
+        a {
+            text-decoration: none !important;
+            color: var(--in-txt-claro);
+        }
+
+        /*------ HEADER ------*/
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2em 0;
+            background-color: var(--in-verde-claro);
+        }
+
+        header img {
+            width: 6em;
+            padding: 0 1em;
+        }
+
+        /*------ MAIN ------*/
+        main {
+            display: flex;
+            justify-content: center;
+            padding: 2em 0;
+        }
+
+        /* ------ SECTIONS ------*/
+        section {
+            padding: 1em;
+            margin: 1em 0;
+            position: relative;
+        }
+
+        /* ------ FOOTER ------*/
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2em 0 4em 0;
+            background-color: var(--in-marco);
+        }
+
+        /* ------ COLORES ------ */
+        .morado {
+            color: var(--in-fondo-claro);
+        }
+
+        .verde {
+            color: var(--in-verde-claro);
+        }
+
+        .rojo {
+            color: var(--in-rojo);
+        }
+
+        .amarillo {
+            color: var(--in-amarillo);
+        }
+
+        .celeste {
+            color: var(--in-celeste);
+        }
+
+        .marron {
+            color: var(--mo-marron);
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <header id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <img src="/imagenes/ghost.svg" alt="">
+                    <h1>Terror en Ispantia</h1><img src="/imagenes/asustado.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <section>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2>Tarjetas de Agentes del <span class="morado">Brujo</span></h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-12">
+                                    <h3 class="morado">INMATERIALES</h3>
+                                    <ul>
+                                        <li>Espectro</li>
+                                        <li>Fantasma</li>
+                                        <li>Poltergeist</li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-4 col-12">
+                                    <h3 class="rojo">ENCARNADOS</h3>
+                                    <ul>
+                                        <li>Zombie</li>
+                                        <li>Esqueleto</li>
+                                        <li>Demonio</li>
+                                        <li>Demonio Volador</li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-4 col-12">
+                                    <h3 class="marron">MONSTRUOS</h3>
+                                    <ul>
+                                        <li>Planta Carnívora</li>
+                                        <li>Árbol Maligno</li>
+                                        <li>Ogro</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2>Tarjetas de Agentes del <span class="amarillo">Gobernador</span></h2>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-12">
+
+                                        <ul>
+                                            <li>Vigilante</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3 col-12">
+                                        <ul>
+                                            <li>Aldeanos Furiosos</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3 col-12">
+                                        <ul>
+                                            <li>Escuadrón de soldados</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3 col-12">
+                                        <ul>
+                                            <li>Caballero Sagrado</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p><a href="#top"><i class="bi bi-arrow-up-circle-fill"></i> Volver arriba</a></p>
+    </footer>
+    <!-- BOOTSTRAP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
