@@ -126,6 +126,11 @@
             margin-bottom: 1em;
         }
 
+        p {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
         ul li {
             font-family: 'draconisregular', sans-serif !important;
             color: var(--in-txt-claro);
@@ -162,6 +167,98 @@
             padding: 1em;
             margin: 1em 0;
             position: relative;
+        }
+
+        /* ---SECCIONES TARJETA INMATERIAL ---*/
+        #inmaterial section.caracteristicas {
+            border-top: 1em var(--in-divisor) solid;
+            border-bottom: 1em var(--in-divisor) solid;
+        }
+
+        .casilla {
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+            border: 1px var(--in-divisor) dashed;
+            border-collapse: collapse;
+            padding: 1em;
+            /* position: relative; */
+        }
+
+        #inmaterial .casilla {
+            border: 1px var(--in-divisor) dashed;
+        }
+
+        .casilla h4 {
+            padding: 0.5em 1em;
+            width: -webkit-fill-available;
+            text-align: center;
+        }
+
+        .casilla p {
+            text-align: center;
+        }
+
+        #inmaterial .casilla h4 {
+            background-color: var(--in-fondo-osc);
+            border: solid var(--in-marco) 2px;
+        }
+
+        .casilla .num-dato {
+            position: relative;
+            width: -webkit-fill-available;
+            height: 4.2em;
+        }
+
+        .casilla .num-dato .redondo {
+            padding: 0.5em;
+            border-radius: 50px;
+            width: 4em;
+            height: 4em;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            transform: translate(-0%, -0%);
+        }
+
+        #inmaterial .casilla .num-dato .redondo {
+            border: 4px var(--in-marco) solid;
+        }
+
+        .casilla .num-dato .redondo.redondo--celeste {
+            background-color: var(--in-celeste);
+        }
+
+        .casilla .num-dato .redondo.redondo--celeste p {
+            color: var(--in-txt-osc);
+            font-size: 1.7rem;
+            text-align: center;
+            line-height: 2.3rem;
+        }
+
+
+
+        .casilla .num-dato .dato {
+            position: absolute;
+            top: 0.25em;
+            left: 2em;
+            transform: translate(-0%, -0%);
+            width: fit-content;
+            height: auto;
+            padding: 0.3em 0.5em 0.3em 2.2em;
+            background-color: var(--in-fondo-claro);
+            border: 2px var(--in-marco) solid;
+            z-index: -1;
+        }
+
+        .casilla .num-dato .dato p {
+            color: var(--in-txt-osc);
+            font-size: 1rem;
+        }
+
+
+        #inmaterial img.foto {
+            max-width: 10em;
         }
 
         /* ------ FOOTER ------*/
@@ -207,75 +304,42 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 d-flex justify-content-center align-items-center">
-                    <img src="imagenes/ghost.svg" alt="">
-                    <h1>Terror en Ispantia</h1><img src="imagenes/asustado.svg" alt="">
+                    <h1>Espectro</h1>
                 </div>
             </div>
         </div>
     </header>
-    <main>
+    <main id="inmaterial">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <section>
                         <div class="container">
                             <div class="row">
-                                <div class="col-12">
-                                    <h2>Tarjetas de Agentes del <span class="morado">Brujo</span></h2>
+                                <div class="col-12 d-flex justify-content-center align-items-center">
+                                    <img src="imagenes/espectro.svg" alt="" class="foto">
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-4 col-12">
-                                    <h3 class="morado">INMATERIALES</h3>
-                                    <ul>
-                                        <li><a href="espectro.html">Espectro</a></li>
-                                        <li>Fantasma</li>
-                                        <li><a href="">Poltergeist</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-4 col-12">
-                                    <h3 class="rojo">ENCARNADOS</h3>
-                                    <ul>
-                                        <li><a href="">Zombie</a></li>
-                                        <li><a href="">Esqueleto</a></li>
-                                        <li><a href="">Demonio</a></li>
-                                        <li><a href="">Demonio Volador</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-4 col-12">
-                                    <h3 class="marron">MONSTRUOS</h3>
-                                    <ul>
-                                        <li><a href="">Planta Carnívora</a></li>
-                                        <li><a href="">Árbol Maligno</a></li>
-                                        <li><a href="">Ogro</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <h2>Tarjetas de Agentes del <span class="amarillo">Gobernador</span></h2>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-12">
 
-                                        <ul>
-                                            <li><a href="">Vigilante</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-3 col-12">
-                                        <ul>
-                                            <li><a href="">Aldeanos Furiosos</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-3 col-12">
-                                        <ul>
-                                            <li><a href="">Escuadrón de soldados</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-3 col-12">
-                                        <ul>
-                                            <li><a href="">Caballero Sagrado</a></li>
-                                        </ul>
+
+                        </div>
+                    </section>
+                    <section class="caracteristicas">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3 col-12 casilla">
+                                    <h4>CLASE</h4>
+                                    <p>Inmaterial</p>
+                                </div>
+                                <div class="col-lg-3 col-12 casilla">
+                                    <h4>ATAQUE</h4>
+                                    <div class="num-dato">
+                                        <div class="redondo redondo--celeste">
+                                            <p>1D4</p>
+                                        </div>
+                                        <div class="dato">
+                                            <p>Alarido Atemorizante</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
