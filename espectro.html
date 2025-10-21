@@ -107,6 +107,8 @@
             font-family: 'DRAGON HUNTER', sans-serif !important;
             text-align: center;
             word-wrap: break-word;
+            font-size: 3.5rem;
+            line-height: 4rem;
         }
 
         h2,
@@ -124,10 +126,23 @@
             border-bottom: rgba(255, 255, 255, 0.3) solid 1px;
             padding-bottom: 0.5em;
             margin-bottom: 1em;
+            font-size: 3rem;
+            line-height: 3.5rem;
+        }
+
+        h3 {
+            font-size: 2.5rem;
+            line-height: 3rem;
+        }
+
+        h4 {
+            font-size: 2rem;
+            line-height: 2.5rem;
         }
 
         p {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            line-height: 2rem;
             letter-spacing: 1px;
         }
 
@@ -151,43 +166,58 @@
         }
 
         header img {
-            width: 6em;
+            width: 11em;
             padding: 0 1em;
+        }
+
+        header .casilla {
+            border-radius: 100px;
+            border: 4px var(--in-marco) solid;
+            background-color: var(--in-fondo-claro);
+            padding: 0.1em 2em;
+            display: flex;
+            align-items: center;
+        }
+
+        header .casilla p {
+            color: var(--in-txt-osc);
+            padding: 0;
+            margin: 0;
         }
 
         /*------ MAIN ------*/
         main {
             display: flex;
             justify-content: center;
-            padding: 2em 0;
+            padding: 0;
+            margin: 0;
+            border-top: 1em var(--in-marco) solid
         }
 
         /* ------ SECTIONS ------*/
         section {
-            padding: 1em;
-            margin: 1em 0;
+            padding: 0;
+            margin: 0;
             position: relative;
         }
 
         /* ---SECCIONES TARJETA INMATERIAL ---*/
         #inmaterial section.caracteristicas {
-            border-top: 1em var(--in-divisor) solid;
-            border-bottom: 1em var(--in-divisor) solid;
+            border-left: 1em var(--in-marco) solid;
+            border-right: 1em var(--in-marco) solid;
+
         }
 
         .casilla {
             display: flex;
             flex-direction: column;
-            /* align-items: center; */
-            border: 1px var(--in-divisor) dashed;
+            align-items: center;
             border-collapse: collapse;
             padding: 1em;
             /* position: relative; */
         }
 
-        #inmaterial .casilla {
-            border: 1px var(--in-divisor) dashed;
-        }
+
 
         .casilla h4 {
             padding: 0.5em 1em;
@@ -201,13 +231,28 @@
 
         #inmaterial .casilla h4 {
             background-color: var(--in-fondo-osc);
-            border: solid var(--in-marco) 2px;
+            border: solid var(--in-marco) 4px;
         }
 
-        .casilla .num-dato {
+        .casilla .num-dato,
+        .casilla .dato-num {
             position: relative;
-            width: -webkit-fill-available;
-            height: 4.2em;
+            width: 100%;
+        }
+
+        .casilla .num-dato,
+        .casilla .dato-num {
+            height: 5em;
+        }
+
+
+
+        .casilla .redondo {
+            padding: 0.5em;
+            border-radius: 50px;
+            width: 4em;
+            height: 4em;
+
         }
 
         .casilla .num-dato .redondo {
@@ -221,45 +266,99 @@
             transform: translate(-0%, -0%);
         }
 
-        #inmaterial .casilla .num-dato .redondo {
+        .casilla .dato-num .redondo {
+            padding: 0.5em;
+            border-radius: 50px;
+            width: 4em;
+            height: 4em;
+            position: absolute;
+            top: 0%;
+            right: 0%;
+            transform: translate(-0%, -0%);
+        }
+
+        #inmaterial .casilla .redondo {
             border: 4px var(--in-marco) solid;
         }
 
-        .casilla .num-dato .redondo.redondo--celeste {
+        .casilla .redondo.redondo--ataque {
+            background-color: var(--in-verde-claro);
+        }
+
+        .casilla .redondo.redondo--vida {
+            background-color: var(--in-rojo);
+        }
+
+        .casilla .redondo.redondo--atributo {
             background-color: var(--in-celeste);
         }
 
-        .casilla .num-dato .redondo.redondo--celeste p {
-            color: var(--in-txt-osc);
+        .casilla .redondo.redondo--recurso {
+            background-color: var(--in-amarillo);
+        }
+
+        .casilla .redondo p {
             font-size: 1.7rem;
             text-align: center;
             line-height: 2.3rem;
         }
 
+        .casilla .redondo.redondo--ataque p,
+        .casilla .redondo.redondo--vida p,
+        .casilla .redondo.redondo--atributo p,
+        .casilla .redondo.redondo--recurso p {
+            color: var(--in-txt-osc);
+        }
+
+
 
 
         .casilla .num-dato .dato {
             position: absolute;
-            top: 0.25em;
+            top: 0.5em;
             left: 2em;
             transform: translate(-0%, -0%);
-            width: fit-content;
+            width: 90%;
             height: auto;
-            padding: 0.3em 0.5em 0.3em 2.2em;
+            padding: 0.3em 0.5em 0.3em 2.5em;
             background-color: var(--in-fondo-claro);
             border: 2px var(--in-marco) solid;
             z-index: -1;
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .casilla .dato-num .dato {
+            position: absolute;
+            top: 0.5em;
+            right: 2em;
+            transform: translate(-0%, -0%);
+            width: 90%;
+            height: auto;
+            padding: 0.3em 0.5em 0.3em 1.5em;
+            background-color: var(--in-fondo-claro);
+            border: 2px var(--in-marco) solid;
+            z-index: -1;
+            border-top-left-radius: 50px;
+            border-bottom-left-radius: 50px;
+        }
+
+        .casilla .num-dato .dato p,
+        .casilla .dato-num .dato p {
+            color: var(--in-txt-osc);
+            margin: 0;
         }
 
         .casilla .num-dato .dato p {
-            color: var(--in-txt-osc);
-            font-size: 1rem;
+            text-align: left;
+        }
+
+        .casilla .dato-num .dato p {
+            text-align: left;
         }
 
 
-        #inmaterial img.foto {
-            max-width: 10em;
-        }
+
 
         /* ------ FOOTER ------*/
         footer {
@@ -307,38 +406,109 @@
                     <h1>Espectro</h1>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <img src="imagenes/espectro.svg" alt="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <div class="casilla">
+
+                        <p><strong>CLASE:</strong> Inmaterial</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
     <main id="inmaterial">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <section>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 d-flex justify-content-center align-items-center">
-                                    <img src="imagenes/espectro.svg" alt="" class="foto">
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </section>
+                <div class="col-12 g-0 m-0">
+                    <!-- ******************* ATAQUE  ******************* -->
                     <section class="caracteristicas">
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-3 col-12 casilla">
-                                    <h4>CLASE</h4>
-                                    <p>Inmaterial</p>
-                                </div>
+
                                 <div class="col-lg-3 col-12 casilla">
                                     <h4>ATAQUE</h4>
                                     <div class="num-dato">
-                                        <div class="redondo redondo--celeste">
+                                        <div class="redondo redondo--ataque">
                                             <p>1D4</p>
                                         </div>
                                         <div class="dato">
                                             <p>Alarido Atemorizante</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- ******************* HP  ******************* -->
+                    <section class="caracteristicas">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-3 col-12 casilla">
+                                    <h4>HP (Puntos de Vida)</h4>
+
+                                    <div class="redondo redondo--vida">
+                                        <p>2pts</p>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- ******************* ATRIBUTOS FIJOS  ******************* -->
+                    <section class="caracteristicas">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-3 col-12 casilla">
+                                    <h4>ATRIBUTOS FIJOS</h4>
+                                    <div class="num-dato">
+                                        <div class="redondo redondo--atributo">
+                                            <p>1pt</p>
+                                        </div>
+                                        <div class="dato">
+                                            <p>Maldición</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- ******************* RECURSOS POR DERROTA  ******************* -->
+                    <section class="caracteristicas">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-3 col-12 casilla">
+                                    <h4>RECURSOS POR DERROTA</h4>
+                                    <div class="dato-num">
+                                        <div class="redondo redondo--recurso">
+                                            <p>1pt</p>
+                                        </div>
+                                        <div class="dato">
+                                            <p>Valor</p>
+                                        </div>
+                                    </div>
+                                    <div class="dato-num">
+                                        <div class="redondo redondo--recurso">
+                                            <p>1pt</p>
+                                        </div>
+                                        <div class="dato">
+                                            <p>Fe</p>
+                                        </div>
+                                    </div>
+                                    <div class="dato-num">
+                                        <div class="redondo redondo--recurso">
+                                            <p>1pt</p>
+                                        </div>
+                                        <div class="dato">
+                                            <p>Conocimiento</p>
                                         </div>
                                     </div>
                                 </div>
