@@ -1,0 +1,335 @@
+
+
+/*------ HEADER ------*/
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background-color: var(--in-verde-claro);
+}
+
+header img {
+    width: 100%;
+    padding: 0;
+}
+
+header .casilla {
+    padding: 0.1em 2em;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+header .titulo.casilla {
+    border: 8px var(--in-marco) solid;
+    background-color: var(--in-fondo-claro);
+    width: 100%;
+}
+header .categoria.casilla {
+    border: 8px var(--in-marco) solid;
+    background-color: var(--in-fondo-claro);
+    width: 100%;
+}
+
+header .casilla p {
+    color: var(--in-txt-osc);
+    padding: 0;
+    margin: 0;
+}
+
+/*------ MAIN ------*/
+main {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    border-top: 1em var(--in-marco) solid
+}
+
+/* ------ SECTIONS ------*/
+section {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+/* ---SECCIONES TARJETA INMATERIAL ---*/
+#inmaterial section.caracteristicas {
+    border-left: 1em var(--in-marco) solid;
+    border-right: 1em var(--in-marco) solid;
+
+}
+
+.casilla {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-collapse: collapse;
+    padding: 1em;
+    /* position: relative; */
+}
+
+
+
+.casilla h4 {
+    padding: 0.5em 1em;
+    width: -webkit-fill-available;
+    text-align: center;
+}
+
+.casilla p {
+    text-align: center;
+}
+
+.casilla h4.potenciador,
+.casilla h4.debilitador {
+    position: relative;
+    text-align: left;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.casilla h4.potenciador.ataque,
+.casilla h4.debilitador.ataque {
+    justify-content: center;
+
+}
+
+.casilla h4.potenciador img,
+.casilla h4.debilitador img {
+    width: 2.5em;
+    padding-right: 10px;
+}
+
+.caja-potenciador {
+    border: 4px var(--in-marco) solid;
+    padding: 1em;
+    margin: 1em 0;
+    background-color: var(--in-fondo-claro);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.caja-potenciador p {
+    color: var(--in-txt-osc);
+}
+
+.fila-potenciador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 0;
+    border-bottom: 2px var(--in-marco) solid;
+}
+
+.fila-debilitador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5em 0;
+    border-bottom: 2px var(--in-marco) solid;
+}
+
+.fila-potenciador:last-child,
+.fila-debilitador:last-child {
+    border-bottom: none;
+}
+
+.fila-potenciador p:first-child,
+.fila-debilitador p:first-child {
+    text-align: left;
+}
+
+.num-potenciador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em;
+    border: 4px var(--in-marco) solid;
+    background-color: var(--in-rojo);
+}
+
+.caja-potenciador .num-debilitador {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0.5em;
+    border: none;
+    background-color: var(--in-fondo-osc);
+    color: var(--in-txt-claro);
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    text-align: left;
+}
+
+
+#inmaterial .casilla h4 {
+    background-color: var(--in-fondo-osc);
+    border: solid var(--in-marco) 4px;
+}
+
+.casilla .num-dato,
+.casilla .dato-num {
+    position: relative;
+    width: 100%;
+}
+
+.casilla .num-dato,
+.casilla .dato-num {
+    height: 5em;
+}
+
+
+
+.casilla .redondo {
+    padding: 0.5em;
+    border-radius: 50px;
+    width: 4em;
+    height: 4em;
+
+}
+
+.casilla .num-dato .redondo {
+    padding: 0.5em;
+    border-radius: 50px;
+    width: 4em;
+    height: 4em;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translate(-0%, -0%);
+}
+
+
+.casilla .dato-num .redondo {
+    padding: 0.5em;
+    border-radius: 50px;
+    width: 4em;
+    height: 4em;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    transform: translate(-0%, -0%);
+}
+
+
+#inmaterial .casilla .redondo {
+    border: 4px var(--in-marco) solid;
+}
+
+.casilla .redondo.redondo--ataque {
+    background-color: var(--in-verde-claro);
+}
+
+.casilla .redondo.redondo--vida {
+    background-color: var(--in-rojo);
+}
+
+.casilla .redondo.redondo--atributo {
+    background-color: var(--in-celeste);
+}
+
+.casilla .redondo.redondo--recurso {
+    background-color: var(--in-amarillo);
+}
+
+
+.casilla .redondo p {
+    font-size: 1.7rem;
+    text-align: center;
+    line-height: 2.3rem;
+}
+
+.casilla .redondo.redondo--ataque p,
+.casilla .redondo.redondo--vida p,
+.casilla .redondo.redondo--atributo p,
+.casilla .redondo.redondo--recurso p {
+    color: var(--in-txt-osc);
+}
+
+
+
+
+.casilla .num-dato .dato {
+    position: absolute;
+    top: 0.5em;
+    left: 2em;
+    transform: translate(-0%, -0%);
+    width: 90%;
+    height: auto;
+    padding: 0.3em 0.5em 0.3em 2.5em;
+    background-color: var(--in-fondo-claro);
+    border: 2px var(--in-marco) solid;
+    z-index: -1;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.casilla .dato-num .dato {
+    position: absolute;
+    top: 0.5em;
+    right: 2em;
+    transform: translate(-0%, -0%);
+    width: 90%;
+    height: auto;
+    padding: 0.3em 0.5em 0.3em 1.5em;
+    background-color: var(--in-fondo-claro);
+    border: 2px var(--in-marco) solid;
+    z-index: -1;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.casilla .num-dato .dato p,
+.casilla .dato-num .dato p {
+    color: var(--in-txt-osc);
+    margin: 0;
+}
+
+.casilla .num-dato .dato p {
+    text-align: left;
+}
+
+.casilla .dato-num .dato p {
+    text-align: left;
+}
+
+
+
+
+/* ------ FOOTER ------*/
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em 0 4em 0;
+    background-color: var(--in-marco);
+}
+
+/* ------ COLORES ------ */
+.morado {
+    color: var(--in-fondo-claro);
+}
+
+.verde {
+    color: var(--in-verde-claro);
+}
+
+.rojo {
+    color: var(--in-rojo);
+}
+
+.amarillo {
+    color: var(--in-amarillo);
+}
+
+.celeste {
+    color: var(--in-celeste);
+}
+
+.marron {
+    color: var(--mo-marron);
+}

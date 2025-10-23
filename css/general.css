@@ -1,0 +1,150 @@
+:root {
+    /*------ colores tarjeta inmateriales ------*/
+    --in-marco: #6420a6;
+    --in-fondo-gral: #250c45;
+    --in-fondo-osc: #411b6f;
+    --in-fondo-claro: #9e62e6;
+    --in-fondo-foto: #241733;
+    --in-txt-osc: #090704;
+    --in-txt-claro: #ffffff;
+    --in-verde-claro: #08e87c;
+    --in-verde-osc: #1c774b;
+    --in-celeste: #4698e5;
+    --in-rojo: #f20e49;
+    --in-amarillo: #e5df46;
+    --in-divisor: #3c1468;
+    /*------ colores tarjetas encarnados ------*/
+    --en-rojo-claro: #f25f50;
+    --en-rojo-osc: #ac1d0e;
+    --en-rojo: #d3301f;
+    --en-naranjo-claro: #d75e00;
+    --en-naranjo: #cb5700;
+    --en--naranjo-osc: #a64300;
+    --en-rojo-marco: #bf1f0e;
+    --en-rojo-fondo: #4c1813;
+    /*------ colores tarjetas monstruos ------*/
+    --mo-verde-claro: #25c97a;
+    --mo-verde: #1f975d;
+    --mo-verde-osc: #1b6c45;
+    --mo-verde-marco: #128e52;
+    --mo-verde-fondo: #093f25;
+}
+
+/* DRACONIS FONT */
+@font-face {
+    font-family: 'draconisregular';
+    src: url('../fonts/draconis-jrw6b-webfont.woff2') format('woff2'),
+        url('../fonts/draconis-jrw6b-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'draconisbold';
+    src: url('../fonts/draconisbold-qzxd6-webfont.woff2') format('woff2'),
+        url('../fonts/draconisbold-qzxd6-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'draconisbold_italic';
+    src: url('../fonts/draconisbolditalic-al8o6-webfont.woff2') format('woff2'),
+        url('../fonts/draconisbolditalic-al8o6-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'draconisitalic';
+    src: url('../fonts/draconisitalic-vgdjy-webfont.woff2') format('woff2'),
+        url('../fonts/draconisitalic-vgdjy-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* DRAGON HUNTER FONT */
+@font-face {
+    font-family: 'DRAGON HUNTER';
+    src: url('../fonts/DragonHunter-9Ynxj.eot');
+    src: url('../fonts/DragonHunter-9Ynxj.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/DragonHunter-9Ynxj.woff2') format('woff2'),
+        url('../fonts/DragonHunter-9Ynxj.woff') format('woff'),
+        url('../fonts/DragonHunter-9Ynxj.ttf') format('truetype'),
+        url('../fonts/DragonHunter-9Ynxj.svg#DRAGON HUNTER') format('svg');
+}
+
+/* Fourth Edition Dings */
+@font-face {
+    font-family: 'Fourth-Edition Dings';
+    src: url('../fonts/FourthEditionDings-82j0.eot');
+    src: url('../fonts/FourthEditionDings-82j0.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/FourthEditionDings-82j0.woff2') format('woff2'),
+        url('../fonts/FourthEditionDings-82j0.woff') format('woff'),
+        url('../fonts/FourthEditionDings-82j0.ttf') format('truetype'),
+        url('../fonts/FourthEditionDings-82j0.svg#Fourth-Edition Dings') format('svg');
+}
+
+/*------ GENERAL ------*/
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body {
+    background-color: var(--in-fondo-gral) !important;
+}
+
+h1 {
+    font-family: 'draconisbold', sans-serif !important;
+    text-align: center;
+    word-wrap: break-word;
+    font-size: 3.5rem;
+    line-height: 4rem;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-family: 'draconisregular', sans-serif !important;
+    color: var(--in-txt-claro);
+}
+
+h2 {
+    text-align: center;
+    border-bottom: rgba(255, 255, 255, 0.3) solid 1px;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    font-size: 3rem;
+    line-height: 3.5rem;
+}
+
+h3 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+}
+
+h4 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+
+p {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: 1px;
+}
+
+ul li {
+    font-family: 'draconisregular', sans-serif !important;
+    color: var(--in-txt-claro);
+}
+
+a {
+    text-decoration: none !important;
+    color: var(--in-txt-claro);
+}
