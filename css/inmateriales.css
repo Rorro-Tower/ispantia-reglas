@@ -7,7 +7,7 @@ header {
     align-items: center;
     padding: 0;
     margin: 0;
-    background-color: var(--in-verde-claro);
+    background-color: #000000;
 }
 
 header img {
