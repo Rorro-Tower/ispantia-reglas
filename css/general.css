@@ -34,6 +34,7 @@
     --go-cafe-osc: #7f5531;
     --go-cafe-marco: #924229;
     --go-cafe-fondo: #442f30;
+    --go--azul: #2b4ad0;
 
 }
 
@@ -130,6 +131,7 @@ h2 {
     line-height: 3.5rem;
 }
 
+
 h3 {
     font-size: 2.5rem;
     line-height: 3rem;
@@ -139,11 +141,25 @@ h4 {
     font-size: 2rem;
     line-height: 2.5rem;
 }
+h4 span {
+    font-family: 'Fourth-Edition Dings';
+    font-size: 2em;
+    padding-right: 10px;
+}
 
 p {
     font-size: 1.5rem;
     line-height: 2rem;
     letter-spacing: 1px;
+}
+.combate p span {
+    color: var(--en-rojo-osc);
+}
+.combate p span.verde {
+    color: var(--in-verde-osc);
+}
+.combate p span.azul {
+    color: var(--go--azul);
 }
 
 ul li {
