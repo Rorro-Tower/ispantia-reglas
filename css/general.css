@@ -170,4 +170,5 @@ ul li {
 a {
     text-decoration: none !important;
     color: var(--in-txt-claro);
+    font-family: 'draconisregular', sans-serif !important;
 }

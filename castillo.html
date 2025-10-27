@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPANTIA</title>
+    <!-- BOOTSTRAP 5.3.8 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- GENERAL CSS -->
+    <link rel="stylesheet" href="css/general.css">
+    <!-- GOBERNADOR CSS -->
+    <link rel="stylesheet" href="css/gobernador.css">
+
+
+</head>
+
+<body>
+    <header id="top">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center g-0 m-0">
+                    <img src="imagenes/castillo.jpg" alt="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center g-0 m-0">
+                    <div class="titulo casilla">
+                        <h1>Castillo</h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <main id="gobernador" class="juego">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 g-0 m-0">
+
+
+
+
+                    <section>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3>Dependencias del Castillo</h3>
+                                    <ul>
+                                        <li><a href="#cuartel">Cuartel</a></li>
+                                        <li><a href="#templo">Templo</a></li>
+                                        <li><a href="#alquimistas">Torre de los Alquimistas</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <div class="caja-potenciador" id="cuartel">
+                                        <div class="fila-debilitador">
+                                            <h4>Cuartel</h4>
+                                            <p>Lugar de entrenamiento para agentes que combaten a entes inmateriales,
+                                                muertos vivientes y monstruos. Los agentes son:</p>
+                                            <ul>
+                                                <li><a href="vigilante.html">Vigilante</a></li>
+                                                <li><a href="soldados.html">Escuadrón de Soldados</a></li>
+                                                <li><a href="guerrero-sagrado.html">Guerrero Sagrado</a></li>
+                                            </ul>
+                                            <p>Los recursos para crear agentes son Valor, Fe, Conocimiento y Oro.
+                                                <br><br>El Conocimiento les permite manejar los artilugios de los
+                                                alquimistas (Cristal Transmutador, Saeta Cáustica, Orbe Explosivo) y
+                                                utilizarlos como armas. <br><br>Es importante tener en cuenta que estos
+                                                agentes deben equiparse con estas armas para utilizarlas. <br><br>La Fe
+                                                les
+                                                permite espantar a los inmateriales. <br><br>Para utilizar a estos
+                                                agentes
+                                                el Gobernador debe ordenar la CREACIÓN de los agentes que necesite
+                                                utilizar y luego, en el turno siguiente, puede ordenar el ATAQUE.
+                                            </p>
+                                            <a href="#top"><i class="bi bi-arrow-up-circle-fill"></i> SUBIR</a>
+                                        </div>
+                                    </div>
+                                    <div class="caja-potenciador" id="templo">
+                                        <div class="fila-debilitador">
+                                            <h4>Templo</h4>
+                                            <p>Aquí se realizan peticiones para que la divinidad interceda en favor de
+                                                los aldeanos creyentes. Estas peticiones o bendiciones se utilizan para
+                                                espantar a los
+                                                inmateriales o para proteger aldeas, los cultivos y el
+                                                cementerio.<br><br>Las
+                                                peticiones o bendiciones son:</p>
+                                            <ul>
+                                                <li><a href="plegaria.html">Plegarias</a></li>
+                                                <li><a href="cantico.html">Cánticos Fervientes</a></li>
+                                                <li><a href="exorcismo.html">Exorcismos</a></li>
+                                            </ul>
+                                            <p>El recurso que se requiere es Fe y oro, ya que los sacerdotes y los
+                                                obispos lo exigen. <br><br>Al bendecir una casa o cultivo, se les otorga
+                                                protección contra un tipo de hechizo o maldición. <br><br>En el caso de
+                                                que el lugar ya tenga una maldición, se puede anular con una bendición,
+                                                pero existe una jerarquía y condiciones para cada caso. <br><br>Una casa
+                                                que está
+                                                habitada por un inmaterial se considera una
+                                                casa EMBRUJADA.
+                                            </p>
+                                            <a href="#top"><i class="bi bi-arrow-up-circle-fill"></i> SUBIR</a>
+                                        </div>
+                                    </div>
+                                    <div class="caja-potenciador" id="alquimistas">
+                                        <div class="fila-debilitador">
+                                            <h4>Torre de los Alquimistas</h4>
+                                            <p>En este lugar se investiga y se crean mejoras para aumentar la producción
+                                                en los cultivos, contrarrestar los hechizos y también artilugios para
+                                                combatir a los seres
+                                                oscuros.<br><br>
+                                                Las mejoras para los cultivos son:</p>
+                                            <ul>
+                                                <li><a href="elixir.html">Elixir de Crecimiento</a></li>
+                                                <li><a href="escarabajos.html">Escarabajos Come Plagas</a></li>
+                                            </ul>
+                                            <p>Las contramedidas para los hechizos que afectan a los cultivos son:</p>
+                                            <ul>
+                                                <li>Eolípilas de Herón</li>
+                                                <li>Tornillo de Arquímides</li>
+                                            </ul>
+                                            <p>El funcionamiento es el siguiente: Si el <span
+                                                    class="morado">Brujo</span> usa su turno para CONJURAR
+                                                un hechizo sobre
+                                                un cultivo, el <span class="cafe">Gobernador</span> puede usar su
+                                                turno para ordenar a los
+                                                Alquimistas la creación de un artilugio y aplicarlo en una sola acción
+                                                (CONSTRUIR y APLICAR ARTILUGIO).
+                                            </p>
+                                            <p>Los artilugios para combatir a los seres oscuros son: </p>
+                                            <ul>
+                                                <li><a href="cristal.html">Cristal Transmutador</a></li>
+                                                <li><a href="saeta.html">Saeta Cáustica</a></li>
+                                                <li><a href="orbe.html">Orbe Explosivo</a></li>
+                                            </ul>
+                                            <p>Otro punto importante es que estos artilugios que se utilizan como armas
+                                                contra los seres oscuros solo pueden ser utilizados por unidades con el
+                                                debido conocimiento en su utilización, que son: Vigilantes, Escuadrones
+                                                de
+                                                soldados y Guerreros Sagrados. <br><br>El <span
+                                                    class="cafe">Gobernador</span>
+                                                debe ordenar la CREACIÓN de
+                                                los
+                                                artilugios de combate en un turno, y luego puede, en una sola acción,
+                                                enviar unidades equipadas con los artilugios.
+                                            </p>
+                                            <a href="#top"><i class="bi bi-arrow-up-circle-fill"></i> SUBIR</a>
+
+                                        </div>
+                                    </div>
+                                    <div class="caja-potenciador">
+                                        <div class="fila-debilitador">
+                                            <h4>Cultivos</h4>
+
+                                            <p>Si bien esta no es una dependencia del Castillo, es un elemento al
+                                                cuidado y supervisión del <span class="cafe">Gobernador</span>, ya que
+                                                genera ganancias para el reino.<br><br>Cada cultivo genera 10 de oro por
+                                                turno.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <p><a href="#top"><i class="bi bi-arrow-up-circle-fill"></i> Volver arriba</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <p><a href="/ispantia-reglas/"><i class="bi bi-house-fill"></i> Volver al Home</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- BOOTSTRAP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

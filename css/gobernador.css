@@ -124,6 +124,15 @@ section {
 .caja-potenciador p {
     color: var(--in-txt-osc);
 }
+#gobernador.juego a {
+    text-decoration: none;
+    color: var(--in-txt-claro);
+}
+
+#gobernador.juego .caja-potenciador a {
+    text-decoration: none;
+    color: var(--go-cafe);
+}
 
 .fila-potenciador {
     display: flex;
@@ -139,6 +148,9 @@ section {
     align-items: center;
     padding: 0.5em 0;
     border-bottom: 2px var(--go-cafe-osc) solid;
+}
+#gobernador.juego .fila-debilitador {
+    align-items: flex-start;
 }
 
 .fila-potenciador:last-child,
@@ -171,6 +183,22 @@ section {
     font-size: 1.2rem;
     line-height: 1.6rem;
     text-align: left;
+}
+#gobernador.juego .caja-potenciador h4 {
+    color: var(--in-txt-osc);
+}
+#gobernador.juego .caja-potenciador p {
+    line-height: 1.5rem;
+}
+#gobernador.juego ul li {
+    line-height: 2.5rem;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+
+}
+#gobernador.juego .caja-potenciador ul li {
+    color: var(--in-txt-osc);
+    line-height: 2rem;
 }
 .caja-potenciador .num-potenciador.artilugio {
     background-color: var(--in-verde-claro);
@@ -357,4 +385,8 @@ footer {
 
 .marron {
     color: var(--mo-marron);
+}
+
+.cafe {
+    color: var(--go-cafe);
 }

@@ -125,13 +125,15 @@ section {
     border-bottom: 2px var(--in-marco) solid;
 }
 
-.fila-debilitador {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5em 0;
-    border-bottom: 2px var(--in-marco) solid;
+#inmaterial.juego a {
+    text-decoration: none;
+    color: var(--in-txt-claro);
 }
+
+#inmaterial.juego .fila-debilitador {
+    align-items: flex-start;
+}
+
 
 .fila-potenciador:last-child,
 .fila-debilitador:last-child {
