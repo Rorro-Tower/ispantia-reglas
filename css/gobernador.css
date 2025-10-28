@@ -204,6 +204,10 @@ section {
     background-color: var(--in-verde-claro);
 }
 
+#gobernador.juego .fila-potenciador img {
+    width: 100%;
+}
+
 
 #gobernador .casilla h4 {
     background-color: var(--go-cafe-osc);
@@ -370,6 +374,9 @@ footer {
 .verde {
     color: var(--in-verde-claro);
 }
+.verde-osc {
+    color: var(--mo-verde-osc);
+}
 
 .rojo {
     color: var(--in-rojo);
@@ -389,4 +396,12 @@ footer {
 
 .cafe {
     color: var(--go-cafe);
+}
+
+.azul {
+    color: var(--go--azul);
+}
+.destacar {
+    text-transform: uppercase;
+    font-weight: bold;
 }
