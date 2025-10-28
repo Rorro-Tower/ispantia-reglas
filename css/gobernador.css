@@ -200,6 +200,11 @@ section {
     color: var(--in-txt-osc);
     line-height: 2rem;
 }
+#gobernador .fila-potenciador ul li {
+    color: var(--in-txt-osc);
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
 .caja-potenciador .num-potenciador.artilugio {
     background-color: var(--in-verde-claro);
 }
