@@ -286,6 +286,15 @@ section {
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
 }
+#inmaterial .casilla .num-dato .poder {
+    text-align: center;
+    height: auto;
+    padding: 0.3em 0.5em;
+    background-color: var(--in-fondo-claro);
+    border: 4px var(--in-marco) solid;
+    border-radius: 50px;
+    margin-top: 2em;
+}
 
 .casilla .dato-num .dato {
     position: absolute;
@@ -303,7 +312,7 @@ section {
 }
 
 .casilla .num-dato .dato p,
-.casilla .dato-num .dato p {
+.casilla .dato-num .dato p, .casilla .num-dato .poder p {
     color: var(--in-txt-osc);
     margin: 0;
 }

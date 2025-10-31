@@ -46,16 +46,45 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 casilla">
-                                    <h4 class="potenciador ataque"><span>1</span> Inicio</h4>
+                                    <h4 class="potenciador ataque"><span>1</span> Turnos</h4>
                                     <div class="caja-potenciador">
                                         <div class="fila-potenciador">
                                             <ul>
-                                                <li>Siempre que finalice el turno, se recolectan los recursos (cultivos,
+                                                <li>Cada jugador tiene 1 <span class="verde-osc">TURNO</span> para
+                                                    realizar 1 <span class="verde-osc">ACCIÓN</span>.</li>
+                                                <li>El <span class="verde-osc">TURNO</span> inicia con la <span
+                                                        class="verde-osc">ACCIÓN</span> de 1
+                                                    jugador y finaliza con la <span class="verde-osc">ACCIÓN</span>
+                                                    del otro jugador.</li>
+                                                <li>Siempre que finalice el <span class="verde-osc">TURNO</span>, se
+                                                    recolectan los recursos (cultivos,
                                                     familias asustadas, etc)</li>
-                                                <li>Si uno de los jugadores pierde 1 turno, el otro jugador puede
-                                                    realizar 2 acciones seguidas.
-                                                </li>
-                                                <li>El <span class="rojo">COMBATE</span> NO termina el turno.</li>
+                                                <li>Si uno de los jugadores pierde 1 <span
+                                                        class="verde-osc">TURNO</span>, el otro jugador puede
+                                                    realizar 2 acciones seguidas.</li>
+                                                <li>Luego de un <span class="rojo">COMBATE</span>, los turnos se
+                                                    reinician.<br>Ejemplo: El Brujo hace <span
+                                                        class="verde-osc">APARECER</span> un Espectro en una
+                                                    casa.<br>El <span class="cafe">Gobernador</span> <span
+                                                        class="verde-osc">TRASLADA</span> a un
+                                                    Vigilante a esa casa.<br>Se
+                                                    inicia un <span class="rojo">COMBATE</span>.<br> Luego se retoman
+                                                    los turnos,
+                                                    correspondiéndole al Brujo iniciar su <span
+                                                        class="verde-osc">ACCIÓN</span>.</li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 casilla">
+                                    <h4 class="potenciador ataque" id="coincidencia"><span>2</span> Asustar</h4>
+                                    <div class="caja-potenciador">
+                                        <div class="fila-potenciador">
+                                            <ul>
+
                                                 <li>El <span class="morado">Brujo</span> no puede hacer es <span
                                                         class="morado">ASUSTAR</span> 2
                                                     veces seguidas en una misma
@@ -66,12 +95,13 @@
                                                     la 2 y así sucesivamente.</li>
                                                 <li>Hay que tener en cuenta que los inmateriales solo pueden moverse de
                                                     una casa contigua a otra. Al ser seres inmateriales, ese traslado no
-                                                    cuenta como acción, por lo tanto, los inmateriales pueden ir
+                                                    cuenta como <span class="verde-osc">ACCIÓN</span>, por lo tanto, los
+                                                    inmateriales pueden ir
                                                     asustando de casa en casa. </li>
                                                 <li>Ahora bien: el <span class="morado">Brujo</span> puede aprovechar
                                                     esto como una ventaja y
-                                                    utilizar su siguiente acción para <span
-                                                        class="morado">CONJURAR</span> otro ser inmaterial,
+                                                    utilizar su siguiente <span class="verde-osc">ACCIÓN</span> para
+                                                    <span class="morado">CONJURAR</span> otro ser inmaterial,
                                                     <span class="morado">MALDECIR</span> una casa o un cultivo, o
                                                     también puede simplemente <span class="morado">APARECER</span>
                                                     en una casa contigua y
@@ -115,16 +145,6 @@
                                                         class="cafe">Gobernador</span> espantando a
                                                     estos seres inmateriales.
                                                 </li>
-                                                <li>En esta etapa el <span class="cafe">Gobernador</span> también puede
-                                                    CREAR, si cuenta con los
-                                                    recursos necesarios, <span class="cafe">Plegarias</span>, <span
-                                                        class="cafe">Cántico Fervientes</span>
-                                                    y <span class="cafe">Exorcismos</span> en
-                                                    el Templo para espantar a los Espectros, Fantasmas y Poltergeist.
-                                                    Los hechizos, al igual que las peticiones, se crean y actúan de
-                                                    forma instantánea. No es necesario trasladarlos. Solo se deben
-                                                    colocar encima de la casa o terreno donde se quiere actuar.</li>
-
 
                                             </ul>
                                         </div>
@@ -132,9 +152,16 @@
                                     </div>
                                 </div>
                             </div>
+
+
+                        </div>
+                    </section>
+                    <section class="caracteristicas">
+                        <div class="container">
+
                             <div class="row">
                                 <div class="col-12 casilla">
-                                    <h4 class="potenciador ataque" id="coincidencia"><span>2</span> Encarnados</h4>
+                                    <h4 class="potenciador ataque" id="coincidencia"><span>3</span> Encarnados</h4>
                                     <div class="caja-potenciador">
                                         <div class="fila-potenciador">
                                             <ul>
@@ -151,6 +178,7 @@
 
                         </div>
                     </section>
+
 
 
                 </div>
