@@ -64,7 +64,7 @@ input[type="number"] {
 .grupo-unidad {
     padding: 0.5em;
     margin-bottom: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Azul de acento */
+    border: 2px dashed rgba(255, 255, 255, 0.2); /* Azul de acento */
     border-radius: 6px;
 }
 
@@ -91,6 +91,10 @@ button:hover {
     line-height: 1.4;
     border-bottom: 1px dashed #545d54;
     padding-bottom: 5px;
+}
+
+.paso-actual, .paso-oculto {
+    width: 100%;
 }
 
 /*------ HEADER ------*/
@@ -171,12 +175,15 @@ section {
     /* position: relative; */
 }
 
-
-
-.casilla h4 {
+.casilla h4, .casilla h5 {
     padding: 0.5em 1em;
     width: -webkit-fill-available;
     text-align: center;
+}
+h5 {
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    border-bottom: var(--gris-agata) dashed 2px;
 }
 
 .casilla p {
