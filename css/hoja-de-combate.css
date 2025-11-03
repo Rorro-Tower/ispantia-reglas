@@ -1,0 +1,514 @@
+:root {
+    /*--- Colores de piedra (ejemplos) ---*/
+--piedra: #ADA587;
+--piedra-claro: #B7B09C;
+--gris-agata: #B5B8B1;
+--gris-pizarra: #434750 ;
+/* ---- Colores de metal ----*/
+--gris-metalizado: #2C3539;
+--gris-plata: #8A9597;
+--bronce: #b29146;
+--gris-basalto: #4E5754;
+}
+/* styles.css */
+/* 
+body {
+    font-family: 'Urbanist', sans-serif;
+    background-color: #323941; 
+    color: #ffffff;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #D72B1F; 
+    text-align: center;
+} */
+
+/* .contenedor-combate {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #414f5e;
+    padding: 20px;
+    border-radius: 8px;
+} */
+
+/* Estilos de inputs */
+select {
+    font-family: 'draconisregular';
+    font-size: 1.5rem;
+    padding: 0.5em;
+    border-radius: 6px;
+    margin-bottom: 1em;
+    color: var(--in-txt-claro);
+    background-color: var(--gris-pizarra);
+    border: var(--gris-agata) solid 4px;
+}
+label, input {
+    display: block;
+    margin-bottom: 10px;
+}
+label {
+    font-family: 'draconisregular';
+    font-size: 1.5rem;
+    color: var(--in-txt-claro);
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.grupo-unidad {
+    padding: 0.5em;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Azul de acento */
+    border-radius: 6px;
+}
+
+button {
+    padding: 0.5em 1em;
+    background-color: var(--en-rojo-osc);
+    color: white;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: 'draconisitalic';
+    font-weight: 700;
+    width: fit-content;
+}
+
+button:hover {
+    background-color: #0c56a3;
+}
+
+#registro-combate p {
+    font-size: 0.9em;
+    line-height: 1.4;
+    border-bottom: 1px dashed #545d54;
+    padding-bottom: 5px;
+}
+
+/*------ HEADER ------*/
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background-color: #000000;
+}
+
+header img {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+header .casilla {
+    padding: 0.1em 2em;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+header .titulo.casilla {
+    border: 8px var(--gris-agata) solid;
+    background-color: var(--gris-basalto);
+    width: 100%;
+}
+header .titulo.casilla h1 {
+    color: var(--in-txt-claro);
+}
+header .categoria.casilla {
+    border: 8px var(--gris-agata) solid;
+    background-color: var(--gris-basalto);
+    width: 100%;
+}
+
+header .casilla p {
+    color: var(--in-txt-osc);
+    padding: 0;
+    margin: 0;
+}
+/*------ MAIN ------*/
+main {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    border-top: 1em var(--gris-plata) solid;
+}
+
+main#combate{
+    border-top: 1em var(--gris-plata) solid;
+    background-color: var(--gris-metalizado);
+    position: relative;
+    z-index: 0;
+}
+/* ------ SECTIONS ------*/
+section {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+/* ---SECCIONES TARJETA COMBATE ---*/
+#combate section.caracteristicas {
+    border-left: 1em var(--gris-plata) solid;
+    border-right: 1em var(--gris-plata) solid;
+
+}
+.casilla {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-collapse: collapse;
+    padding: 1em;
+    /* position: relative; */
+}
+
+
+
+.casilla h4 {
+    padding: 0.5em 1em;
+    width: -webkit-fill-available;
+    text-align: center;
+}
+
+.casilla p {
+    text-align: center;
+}
+
+.casilla h4.potenciador,
+.casilla h4.debilitador {
+    position: relative;
+    text-align: left;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.casilla h4.potenciador.ataque,
+.casilla h4.debilitador.ataque {
+    justify-content: center;
+
+}
+
+.casilla h4.potenciador img,
+.casilla h4.debilitador img {
+    width: 2.5em;
+    padding-right: 10px;
+}
+
+.caja-potenciador {
+    border: 4px var(--go-cafe-osc) solid;
+    padding: 1em;
+    margin: 1em 0;
+    background-color: var(--go-cafe-claro);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.caja-potenciador p {
+    color: var(--in-txt-osc);
+}
+#combate.juego a {
+    text-decoration: none;
+    color: var(--in-txt-claro);
+}
+
+#combate.juego .caja-potenciador a {
+    text-decoration: none;
+    color: var(--go-cafe);
+}
+
+.fila-potenciador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 0;
+    border-bottom: 2px var(--go-cafe-osc) solid;
+}
+
+.fila-debilitador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5em 0;
+    border-bottom: 2px var(--go-cafe-osc) solid;
+}
+#combate.juego .fila-debilitador {
+    align-items: flex-start;
+}
+
+.fila-potenciador:last-child,
+.fila-debilitador:last-child {
+    border-bottom: none;
+}
+
+.fila-potenciador p:first-child,
+.fila-debilitador p:first-child {
+    text-align: left;
+}
+
+.num-potenciador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em;
+    border: 4px var(--go-cafe-osc) solid;
+    background-color: var(--in-celeste);
+}
+
+.caja-potenciador .num-debilitador {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0.5em;
+    border: none;
+    background-color: var(--go-cafe-osc);
+    color: var(--in-txt-claro);
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    text-align: left;
+}
+#combate.juego .caja-potenciador h4 {
+    color: var(--in-txt-osc);
+}
+#combate.juego .caja-potenciador p {
+    line-height: 1.5rem;
+}
+#combate.juego ul li {
+    line-height: 2.5rem;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+
+}
+#combate.juego .caja-potenciador ul li {
+    color: var(--in-txt-osc);
+    line-height: 2rem;
+}
+#combate .fila-potenciador ul li {
+    color: var(--in-txt-osc);
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+.caja-potenciador .num-potenciador.artilugio {
+    background-color: var(--in-verde-claro);
+}
+
+#combate.juego .fila-potenciador img {
+    width: 100%;
+}
+
+
+#combate .casilla h4 {
+    background-color: var(--gris-basalto);
+    border: solid var(--gris-agata) 4px;
+}
+
+.casilla .num-dato,
+.casilla .dato-num {
+    position: relative;
+    width: 100%;
+}
+
+.casilla .num-dato,
+.casilla .dato-num {
+    height: 5em;
+}
+
+.casilla .dato-num.alto {
+    height: 6em;
+}
+
+
+
+.casilla .redondo {
+    padding: 0.5em;
+    border-radius: 50px;
+    width: 4em;
+    height: 4em;
+
+}
+
+.casilla .num-dato .redondo {
+    padding: 0.5em;
+    border-radius: 50px;
+    width: 4em;
+    height: 4em;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translate(-0%, -0%);
+}
+.casilla .dato-num .redondo.x10 {
+    border-radius: 100px;
+    width: 7em;
+    height: 7em;
+}
+
+.casilla .dato-num .redondo {
+    padding: 0.5em;
+    border-radius: 50px;
+    width: 4em;
+    height: 4em;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    transform: translate(-0%, -0%);
+}
+
+#combate .casilla .redondo {
+    border: 4px var(--go-cafe-marco) solid;
+}
+
+.casilla .redondo.redondo--ataque {
+    background-color: var(--in-verde-claro);
+}
+
+.casilla .redondo.redondo--vida {
+    background-color: var(--in-rojo);
+}
+
+.casilla .redondo.redondo--atributo {
+    background-color: var(--in-celeste);
+}
+
+.casilla .redondo.redondo--recurso {
+    background-color: var(--in-amarillo);
+}
+
+.casilla .redondo p {
+    font-size: 1.7rem;
+    text-align: center;
+    line-height: 2.3rem;
+}
+
+.casilla .redondo.redondo--ataque p,
+.casilla .redondo.redondo--vida p,
+.casilla .redondo.redondo--atributo p,
+.casilla .redondo.redondo--recurso p {
+    color: var(--in-txt-osc);
+}
+
+.casilla .redondo.x10.redondo--recurso p {
+    line-height: 3.3em;
+}
+
+
+
+
+#combate .casilla .num-dato .dato {
+    position: absolute;
+    top: 0.5em;
+    left: 2em;
+    transform: translate(-0%, -0%);
+    width: 90%;
+    height: auto;
+    padding: 0.3em 0.5em 0.3em 2.5em;
+    background-color: var(--go-cafe-claro);
+    border: 4px var(--go-cafe-osc) solid;
+    z-index: -1;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+#combate .casilla .num-dato .poder {
+    text-align: center;
+    height: auto;
+    padding: 0.3em 0.5em;
+    background-color: var(--go-cafe-claro);
+    border: 4px var(--go-cafe-osc) solid;
+    border-radius: 50px;
+    margin-top: 2em;
+}
+
+#combate .casilla .dato-num .dato {
+    position: absolute;
+    top: 0.5em;
+    right: 2em;
+    transform: translate(-0%, -0%);
+    width: 90%;
+    height: auto;
+    padding: 0.3em 0.5em 0.3em 1.5em;
+    background-color: var(--go-cafe-claro);
+    border: 4px var(--go-cafe-osc) solid;
+    z-index: -1;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+#combate .casilla .dato-num .dato.volador {
+    top: 36%
+}
+
+.casilla .num-dato .dato p,
+.casilla .dato-num .dato p, .casilla .num-dato .poder p {
+    color: var(--in-txt-osc);
+    margin: 0;
+}
+
+.casilla .num-dato .dato p {
+    text-align: left;
+}
+
+.casilla .dato-num .dato p {
+    text-align: left;
+}
+
+
+
+
+/* ------ FOOTER ------*/
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em 0 4em 0;
+    background-color: var(--gris-pizarra);
+}
+
+/* ------ COLORES ------ */
+.morado {
+    color: var(--in-fondo-claro);
+}
+
+.verde {
+    color: var(--in-verde-claro);
+}
+.verde-osc {
+    color: var(--mo-verde-osc);
+}
+
+.rojo {
+    color: var(--in-rojo);
+}
+
+.amarillo {
+    color: var(--in-amarillo);
+}
+
+.celeste {
+    color: var(--in-celeste);
+}
+
+.marron {
+    color: var(--mo-marron);
+}
+
+.cafe {
+    color: var(--go-cafe);
+}
+
+.azul {
+    color: var(--go--azul);
+}
+.destacar {
+    text-transform: uppercase;
+    font-weight: bold;
+}
