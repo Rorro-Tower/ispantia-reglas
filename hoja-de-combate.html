@@ -103,28 +103,77 @@
                     <section id="paso-4" class="caracteristicas paso-oculto">
                         <div class="container">
                             <div class="row">
-                                <div class="col-12 casilla">
+                                <div class="col-12 casilla potenciadores">
 
                                     <h4 class="potenciador ataque">PASO 4: Potenciadores y Debilitadores</h4>
+                                    <div class="grupo-modificador">
+                                        <h3>Maldiciones (Brujo)</h3>
+                                        <label for="select-maldicion">Seleccionar Maldición:</label>
+                                        <select id="select-maldicion">
+                                        </select>
+                                    </div>
+
+                                    <div class="grupo-modificador">
+                                        <h3>Bendiciones (Gobernador)</h3>
+                                        <label for="select-bendicion">Seleccionar Bendición:</label>
+                                        <select id="select-bendicion">
+                                        </select>
+                                    </div>
+
+
                                     <div class="d-flex flex-column align-items-center"><button
-                                            onclick="finalizarModificadores()">Siguiente Paso</button></div>
+                                            onclick="aplicarModificadoresYAvanzar()">Continuar al Combate</button></div>
 
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <section id="paso-5-6" class="caracteristicas paso-oculto">
+                    <section class="caracteristicas">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 casilla">
+                                    <div id="registro-combate">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="paso-5" class="caracteristicas paso-oculto">
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 casilla">
 
-                                    <h4 class="potenciador ataque">PASO 5 & 6: Combate por Rondas</h4>
+                                    <h4 class="potenciador ataque">PASO 5: Artilugios</h4>
+                                    <p>Seleccione el artilugio que utilizará la unidad del Gobernador contra el
+                                        ${defensor.nombre} (${defensor.clase}).</p>
+                                    <div class="grupo-modificador">
+                                        <h3>Artilugio</h3>
+                                        <label for="select-artilugio">Seleccionar Artilugio:</label>
+                                        <select id="select-artilugio">
+                                        </select>
+                                    </div>
+
+
+
+                                    <div class="d-flex flex-column align-items-center mb-4"><button
+                                            onclick="aplicarArtilugiosYAvanzar()">Continuar al Combate</button></div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="paso-6" class="caracteristicas paso-oculto">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 casilla">
+
+                                    <h4 class="potenciador ataque">PASO 6: Combate por Rondas</h4>
                                     <p id="hp-iniciales-info"></p>
-                                    <p>Es el turno de ataque del <span id="turno-actual"></span>.</p>
+
                                     <div class="d-flex flex-column align-items-center mb-4"><button
                                             onclick="ejecutarRonda()">¡Lanzar los dados!</button></div>
-                                    <div id="registro-combate">
-                                    </div>
+
 
                                 </div>
                             </div>

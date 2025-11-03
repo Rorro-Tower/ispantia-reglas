@@ -66,6 +66,7 @@ input[type="number"] {
     margin-bottom: 20px;
     border: 2px dashed rgba(255, 255, 255, 0.2); /* Azul de acento */
     border-radius: 6px;
+    width: 100%;
 }
 
 button {
@@ -83,8 +84,15 @@ button {
 }
 
 button:hover {
-    background-color: var(--en-rojo-fondo)
+    background-color: var(--en-rojo-osc)
 }
+button:active {
+    background-color: var(--en-rojo-claro)
+}
+button:visited {
+    background-color: var(--en-rojo-osc)
+}
+
 
 #registro-combate p {
     font-size: 0.9em;
@@ -176,6 +184,9 @@ section {
     border-collapse: collapse;
     padding: 1em;
     /* position: relative; */
+}
+.casilla.potenciadores {
+    align-items: flex-start;
 }
 
 .casilla h4, .casilla h5 {
@@ -522,3 +533,23 @@ footer {
     text-transform: uppercase;
     font-weight: bold;
 }
+#ganador-combate span {
+    color: var(--in-verde-claro);
+}
+#recursos-obtenidos p {
+    padding: 0.3em 0.5em 0.3em 1.5em;
+    background-color: var(--gris-pizarra);
+    border: 4px var(--gris-agata) solid;
+    z-index: -1;
+    border-radius: 50px;
+}
+#recursos-obtenidos span {
+    display: inline-block;
+    padding: 0.5em;
+    border-radius: 50px;
+    width: 2em;
+    line-height: 1.3rem;
+    height: 2em;
+    color: var(--in-txt-osc);
+    background-color: var(--in-amarillo);
+}   
