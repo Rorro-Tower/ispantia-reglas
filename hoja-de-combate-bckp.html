@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPANTIA</title>
+    <!-- BOOTSTRAP 5.3.8 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- GENERAL CSS -->
+    <link rel="stylesheet" href="css/general.css">
+    <!-- HOJA DE COMBATE CSS -->
+    <link rel="stylesheet" href="css/hoja-de-combate.css">
+
+
+</head>
+
+<body>
+    <header id="top">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center g-0 m-0">
+                    <img src="imagenes/combate/combate.jpg" alt="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center g-0 m-0">
+                    <div class="titulo casilla">
+                        <h1>Hoja de Combate</h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <main id="combate" class="juego">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 g-0 m-0">
+                    <!-- ******************* ATAQUE  ******************* -->
+                    <section class="caracteristicas">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 casilla">
+                                    <div id="paso-1" class="paso-actual">
+                                        <h4 class="potenciador ataque">PASO 1: Iniciativa</h4>
+                                        <p>¿Qué bando inicia el ataque?</p>
+                                        <div class="d-flex flex-column align-items-center">
+                                            <button onclick="seleccionarBando('atacante')">El Gobernador ataca</button>
+                                            <button onclick="seleccionarBando('defensor')">El Brujo ataca</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 casilla">
+                                    <div id="paso-2" class="paso-oculto">
+                                        <h4 class="potenciador ataque">PASO 2: Selección de Unidades</h4>
+                                        <div class="grupo-unidad">
+                                            <h5>Unidad del Gobernador</h5>
+                                            <label for="select-gobernador">Seleccione la unidad:</label>
+                                            <select id="select-gobernador"></select>
+                                        </div>
+                                        <div class="grupo-unidad">
+                                            <h5>Unidad del Brujo</h5>
+                                            <label for="select-brujo">Seleccione la unidad:</label>
+                                            <select id="select-brujo"></select>
+                                        </div>
+                                        <div class="d-flex flex-column align-items-center"><button
+                                                onclick="guardarUnidades()">Continuar al Paso 3</button></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 casilla">
+                                    <div id="paso-3" class="paso-oculto">
+                                        <h4 class="potenciador ataque">PASO 3: ¿Desea Huir?</h4>
+                                        <p>El defensor, <span id="nombre-defensor"></span>, ¿desea intentar la huida?
+                                        </p>
+                                        <div class="d-flex flex-column align-items-center">
+                                            <button onclick="iniciarHuida()">Sí, tirar HUÍDA</button>
+                                            <button onclick="avanzarPaso(4)">No, combatir</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 casilla">
+                                    <div id="paso-4" class="paso-oculto">
+                                        <h4 class="potenciador ataque">PASO 4: Potenciadores y Debilitadores</h4>
+                                        <div class="d-flex flex-column align-items-center"><button
+                                                onclick="finalizarModificadores()">Siguiente Paso</button></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 casilla">
+                                    <div id="paso-5-6" class="paso-oculto">
+                                        <h4 class="potenciador ataque">PASO 5 & 6: Combate por Rondas</h4>
+                                        <p id="hp-iniciales-info"></p>
+                                        <p>Es el turno de ataque del <span id="turno-actual"></span>.</p>
+                                        <div class="d-flex flex-column align-items-center mb-4"><button
+                                                onclick="ejecutarRonda()">¡Lanzar los dados!</button></div>
+                                        <div id="registro-combate">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 casilla">
+                                    <div id="paso-final" class="paso-oculto">
+                                        <h4 class="potenciador ataque">¡Combate Finalizado!</h4>
+                                        <p id="ganador-combate"></p>
+                                        <p id="recursos-obtenidos"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <p><a href="#top"><i class="bi bi-arrow-up-circle-fill"></i> Volver arriba</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <p><a href="/ispantia-reglas/"><i class="bi bi-house-fill"></i> Volver al Home</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- BOOTSTRAP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <!-- HOJA DE COMBATE JS -->
+    <script src="js/combate-asistente.js"></script>
+</body>
+
+</html>

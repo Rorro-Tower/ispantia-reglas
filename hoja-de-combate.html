@@ -42,82 +42,107 @@
             <div class="row">
                 <div class="col-12 g-0 m-0">
                     <!-- ******************* ATAQUE  ******************* -->
-                    <section class="caracteristicas">
+                    <section id="paso-1" class="caracteristicas paso-actual">
                         <div class="container">
                             <div class="row">
                                 <div class="col-12 casilla">
-                                    <div id="paso-1" class="paso-actual">
-                                        <h4 class="potenciador ataque">PASO 1: Iniciativa</h4>
-                                        <p>¿Qué bando inicia el ataque?</p>
-                                        <div class="d-flex flex-column align-items-center">
-                                            <button onclick="seleccionarBando('atacante')">El Gobernador ataca</button>
-                                            <button onclick="seleccionarBando('defensor')">El Brujo ataca</button>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="col-12 casilla">
-                                    <div id="paso-2" class="paso-oculto">
-                                        <h4 class="potenciador ataque">PASO 2: Selección de Unidades</h4>
-                                        <div class="grupo-unidad">
-                                            <h5>Unidad del Gobernador</h5>
-                                            <label for="select-gobernador">Seleccione la unidad:</label>
-                                            <select id="select-gobernador"></select>
-                                        </div>
-                                        <div class="grupo-unidad">
-                                            <h5>Unidad del Brujo</h5>
-                                            <label for="select-brujo">Seleccione la unidad:</label>
-                                            <select id="select-brujo"></select>
-                                        </div>
-                                        <div class="d-flex flex-column align-items-center"><button
-                                                onclick="guardarUnidades()">Continuar al Paso 3</button></div>
+                                    <h4 class="potenciador ataque">PASO 1: Iniciativa</h4>
+                                    <p>¿Qué bando inicia el ataque?</p>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <button onclick="seleccionarBando('atacante')">El Gobernador ataca</button>
+                                        <button onclick="seleccionarBando('defensor')">El Brujo ataca</button>
                                     </div>
-                                </div>
 
-                                <div class="col-12 casilla">
-                                    <div id="paso-3" class="paso-oculto">
-                                        <h4 class="potenciador ataque">PASO 3: ¿Desea Huir?</h4>
-                                        <p>El defensor, <span id="nombre-defensor"></span>, ¿desea intentar la huida?
-                                        </p>
-                                        <div class="d-flex flex-column align-items-center">
-                                            <button onclick="iniciarHuida()">Sí, tirar HUÍDA</button>
-                                            <button onclick="avanzarPaso(4)">No, combatir</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 casilla">
-                                    <div id="paso-4" class="paso-oculto">
-                                        <h4 class="potenciador ataque">PASO 4: Potenciadores y Debilitadores</h4>
-                                        <div class="d-flex flex-column align-items-center"><button
-                                                onclick="finalizarModificadores()">Siguiente Paso</button></div>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 casilla">
-                                    <div id="paso-5-6" class="paso-oculto">
-                                        <h4 class="potenciador ataque">PASO 5 & 6: Combate por Rondas</h4>
-                                        <p id="hp-iniciales-info"></p>
-                                        <p>Es el turno de ataque del <span id="turno-actual"></span>.</p>
-                                        <div class="d-flex flex-column align-items-center mb-4"><button
-                                                onclick="ejecutarRonda()">¡Lanzar los dados!</button></div>
-                                        <div id="registro-combate">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 casilla">
-                                    <div id="paso-final" class="paso-oculto">
-                                        <h4 class="potenciador ataque">¡Combate Finalizado!</h4>
-                                        <p id="ganador-combate"></p>
-                                        <p id="recursos-obtenidos"></p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </section>
+                    <section id="paso-2" class="caracteristicas paso-oculto">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 casilla">
+
+                                    <h4 class="potenciador ataque">PASO 2: Selección de Unidades</h4>
+                                    <div class="grupo-unidad">
+                                        <h5>Unidad del Gobernador</h5>
+                                        <label for="select-gobernador">Seleccione la unidad:</label>
+                                        <select id="select-gobernador"></select>
+                                    </div>
+                                    <div class="grupo-unidad">
+                                        <h5>Unidad del Brujo</h5>
+                                        <label for="select-brujo">Seleccione la unidad:</label>
+                                        <select id="select-brujo"></select>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center"><button
+                                            onclick="guardarUnidades()">Continuar al Paso 3</button></div>
+
+                                </div>
 
 
+                            </div>
+                        </div>
+                    </section>
+                    <section id="paso-3" class="caracteristicas paso-oculto">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 casilla">
+
+                                    <h4 class="potenciador ataque">PASO 3: ¿Desea Huir?</h4>
+                                    <p>El defensor, <span id="nombre-defensor"></span>, ¿desea intentar la huida?
+                                    </p>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <button onclick="iniciarHuida()">Sí, tirar HUÍDA</button>
+                                        <button onclick="avanzarPaso(4)">No, combatir</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="paso-4" class="caracteristicas paso-oculto">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 casilla">
+
+                                    <h4 class="potenciador ataque">PASO 4: Potenciadores y Debilitadores</h4>
+                                    <div class="d-flex flex-column align-items-center"><button
+                                            onclick="finalizarModificadores()">Siguiente Paso</button></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="paso-5-6" class="caracteristicas paso-oculto">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 casilla">
+
+                                    <h4 class="potenciador ataque">PASO 5 & 6: Combate por Rondas</h4>
+                                    <p id="hp-iniciales-info"></p>
+                                    <p>Es el turno de ataque del <span id="turno-actual"></span>.</p>
+                                    <div class="d-flex flex-column align-items-center mb-4"><button
+                                            onclick="ejecutarRonda()">¡Lanzar los dados!</button></div>
+                                    <div id="registro-combate">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="paso-final" class="caracteristicas paso-oculto">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 casilla">
+
+                                    <h4 class="potenciador ataque">¡Combate Finalizado!</h4>
+                                    <p id="ganador-combate"></p>
+                                    <p id="recursos-obtenidos"></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
