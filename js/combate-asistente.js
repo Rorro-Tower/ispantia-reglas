@@ -194,20 +194,24 @@ function finalizarModificadores() {
 
 // PASO 6 (Bucle de Combate - Ejecutar una Ronda)
 function ejecutarRonda() {
+    // 1. Verificar si el combate debe continuar
     if (estadoCombate.atacante.salud <= 0 || estadoCombate.defensor.salud <= 0) {
         finalizarCombate();
+        let registro = document.getElementById('registro-combate');
         return;
     }
 
     estadoCombate.ronda++;
     const { atacante, defensor } = estadoCombate;
     
+    // Obtener resultados de tirada (Tirada + Ataque Base + Modificador)
     const resA = simularTirada(atacante.ataqueBase + atacante.modificador);
     const resD = simularTirada(defensor.ataqueBase + defensor.modificador);
     
     let ganadorRonda = "Empate";
     let logAtaqueEspecial = "";
 
+    // 2. Determinar el ganador de la ronda y aplicar daño
     if (resA.totalAtaque > resD.totalAtaque) {
         defensor.salud -= 1;
         ganadorRonda = atacante.nombre;
@@ -216,18 +220,29 @@ function ejecutarRonda() {
         ganadorRonda = defensor.nombre;
     } 
     
-    if (atacante.esPrincipal && atacante.rolAtacante === 'Gobernador') {
+    // Asumiendo que la unidad principal del Gobernador puede hacer Ataque Especial
+    if (atacante.esPrincipal && estadoCombate.rolAtacante === 'Gobernador') {
          logAtaqueEspecial = " | *Posible Ataque Especial del Gobernador verificado.*";
     }
 
+    // 3. REGISTRAR SOLO LA ÚLTIMA RONDA (CAMBIO CLAVE: Usamos '=' en lugar de '+=')
     let registro = document.getElementById('registro-combate');
-    registro.innerHTML += `<p>
-        <strong>Ronda ${estadoCombate.ronda}:</strong><br> 
+    
+    // El título se mantiene para evitar que desaparezca
+    let nuevoRegistro = '<h4>Registro de Rondas:</h4>';
+    
+    nuevoRegistro += `<p class="ronda-activa">
+        <strong>Ronda ${estadoCombate.ronda}</strong> (Último Ataque)<br> 
         Ataque ${atacante.nombre}: [${resA.dado} + ${atacante.ataqueBase}] = <strong>${resA.totalAtaque}</strong><br>
         Ataque ${defensor.nombre}: [${resD.dado} + ${defensor.ataqueBase}] = <strong>${resD.totalAtaque}</strong><br>
-        <span class="resultado-ronda">Gana: ${ganadorRonda}. HP Act.: ${atacante.salud} / ${defensor.salud}</span> ${logAtaqueEspecial}
+        <span class="resultado-ronda">Gana: ${ganadorRonda}. 
+        HP Act.: ${atacante.salud} / ${defensor.salud}</span> ${logAtaqueEspecial}
     </p>`;
+
+    // Reemplaza todo el contenido del registro con la última ronda
+    registro.innerHTML = nuevoRegistro; 
     
+    // 4. Verificar si el combate terminó después de esta ronda
     if (atacante.salud <= 0 || defensor.salud <= 0) {
         finalizarCombate();
     }
@@ -268,6 +283,7 @@ function finalizarCombate() {
         <h4>Recursos obtenidos de ${perdedor.nombre}:</h4>
         ${recursosHTML || '<p>— Sin recursos por derrota. —</p>'}
     `;
+    // Asegurarse de que la última ronda se marque como finalizada
     registro.innerHTML += `<p class="final-combate">**COMBATE FINALIZADO**</p>`;
 
     mostrarPaso('final');
