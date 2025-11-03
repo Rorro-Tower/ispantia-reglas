@@ -350,17 +350,17 @@ function iniciarHuida() {
     let resultadoHuida;
     let registro = document.getElementById('registro-combate');
     
-    // Reglas de Huida: 1 a 6 es Éxito, 7 u 8 es Fallo
-    if (tiradaHuida <= 6) { 
-        resultadoHuida = `¡Fiuuu! El ${estadoCombate.defensor.nombre} logra huir con un **${tiradaHuida}** (1-6).`;
+    // Reglas de Huida: 1 a 6 es fallo, 7 u 8 es éxito
+    if (tiradaHuida >= 7) { 
+        resultadoHuida = `¡Fiuuu! ${estadoCombate.defensor.nombre} sacó un **${tiradaHuida}**, ¡Logró huir!`;
         registro.innerHTML += `<p class="exito">${resultadoHuida}</p>`;
         
         // Finaliza el combate
-        document.getElementById('ganador-combate').textContent = `Combate finalizado por HUÍDA exitosa del ${estadoCombate.defensor.nombre}.`;
+        document.getElementById('ganador-combate').textContent = `Combate finalizado por HUÍDA exitosa de ${estadoCombate.defensor.nombre}.`;
         mostrarPaso('final');
         return;
-    } else { // 7 u 8
-        resultadoHuida = `¡Ups! El ${estadoCombate.defensor.nombre} intentó huir con un **${tiradaHuida}** (7-8) y falló. El combate continúa.`;
+    } else { // 1 a 6
+        resultadoHuida = `¡Ups! ${estadoCombate.defensor.nombre} intentó huir, pero solo obtuvo **${tiradaHuida}**. El combate continúa.`;
         registro.innerHTML += `<p class="fallo">${resultadoHuida}</p>`;
         
         // Continúa al Paso 4
@@ -462,7 +462,24 @@ function aplicarModificadoresYAvanzar() {
     let registro = document.getElementById('registro-combate');
     registro.innerHTML = '<h4>Registro de Modificadores:</h4>' + logModificadores.map(log => `<p class="mod-log">${log}</p>`).join('');
 
-    avanzarPaso(5); // Avanza al nuevo Paso 5 (Artilugios)
+    // === LÓGICA CONDICIONAL PARA SALTAR EL PASO 5 ===
+
+    // Identificamos quién es la unidad del Gobernador (para esta comprobación)
+    const nombreUnidadGov = unidadGobernador.nombre;
+
+    if (nombreUnidadGov === "Aldeanos Furiosos") {
+        // Los Aldeanos Furiosos no usan Artilugios: saltamos al Paso 6.
+        registro.innerHTML += '<p class="alerta">Los Aldeanos Furiosos NO usan Artilugios. Pasando directo al Combate.</p>';
+        avanzarPaso(6);
+    } else {
+        // Si no son Aldeanos Furiosos, preparamos el Paso 5.
+
+        // [Tu nueva línea para inyectar info del defensor en el Paso 5]
+        document.getElementById('info-defensor-artilugio').textContent = 
+            `${defensor.nombre} (${defensor.clase}).`;
+        
+        avanzarPaso(5); // Avanza al Paso 5 (Artilugios)
+    }
 }
 
 // Llenar los menús desplegables de Artilugios (PASO 5)
@@ -558,7 +575,7 @@ function ejecutarRonda() {
         if (resA.dado === resA.numCarasDado) {
             const golpe = atacante.golpePoder;
             resA.totalAtaque += golpe;
-            logModificadoresRonda += `${atacante.nombre} logra un **Golpe de Poder (+${golpe})**!`;
+            logModificadoresRonda += `¡${atacante.nombre} da un Golpe de Poder! (+${golpe})!`;
         }
         // B. Artilugio (Ataque Fijo y Dado Adicional)
         if (atacante.artilugioAtaqueFijo > 0 || atacante.artilugioDadoAdicional > 0) {
@@ -580,7 +597,7 @@ function ejecutarRonda() {
     if (rolD === 'Gobernador' && resD.dado === resD.numCarasDado) {
         const golpe = defensor.golpePoder;
         resD.totalAtaque += golpe;
-        logModificadoresRonda += (logModificadoresRonda ? " | " : "") + `${defensor.nombre} logra un **Golpe de Poder (+${golpe})**!`;
+        logModificadoresRonda += (logModificadoresRonda ? " | " : "") + `¡${defensor.nombre} da un Golpe de Poder (+${golpe})!`;
     }
     
     // --- RESOLUCIÓN Y DAÑO ---
@@ -645,16 +662,16 @@ function finalizarCombate() {
 
     for (const recurso in recursos) {
         if (recursos[recurso] > 0) {
-            recursosHTML += `<p>• ${recurso}: <span>${recursos[recurso]}</span></p>`;
+            recursosHTML += `<p>${recurso}: <span>${recursos[recurso]}</span></p>`;
         }
     }
 
-    document.getElementById('ganador-combate').textContent = `¡El GANADOR es ${ganador}!`;
+    document.getElementById('ganador-combate').textContent = `Vencedor: ${ganador}`;
     document.getElementById('recursos-obtenidos').innerHTML = `
         <h4>Recursos obtenidos de ${perdedor.nombre}:</h4>
         ${recursosHTML || '<p>— Sin recursos por derrota. —</p>'}
     `;
-    registro.innerHTML += `<p class="final-combate">**COMBATE FINALIZADO**</p>`;
+    registro.innerHTML += `<p class="final-combate">EL COMBATE HA TERMINADO</p>`;
 
     mostrarPaso('final');
 }

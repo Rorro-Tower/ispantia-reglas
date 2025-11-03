@@ -95,10 +95,11 @@ button:visited {
 
 
 #registro-combate p {
-    font-size: 0.9em;
-    line-height: 1.4;
+    font-size: 0.9rem;
+    line-height: 1.7rem;
     border-bottom: 1px dashed #545d54;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .paso-actual, .paso-oculto {
@@ -542,6 +543,8 @@ footer {
     border: 4px var(--gris-agata) solid;
     z-index: -1;
     border-radius: 50px;
+    text-align: left;
+    width: fit-content;
 }
 #recursos-obtenidos span {
     display: inline-block;
@@ -552,4 +555,46 @@ footer {
     height: 2em;
     color: var(--in-txt-osc);
     background-color: var(--in-amarillo);
-}   
+    text-align: center;
+}
+
+p.exito {
+    background-color: var(--in-verde-claro);
+    padding: 0.3em 0.5em;
+    color: var(--in-txt-osc);
+    border-bottom: none !important;
+}
+
+p.fallo {
+    background-color: var(--in-amarillo);
+    padding: 0.3em 0.5em;
+    color: var(--en-rojo-osc);
+    border-bottom: none !important;
+}
+
+p.ronda-activa {
+    border: var(--in-amarillo) solid 2px !important;
+    background-color: var(--gris-basalto);
+}
+
+p.alerta {
+    background-color: var(--in-amarillo);
+    padding: 0.3em 0.5em;
+    color: var(--en-rojo-osc);
+    border-bottom: none !important;
+}
+
+p span.resultado-ronda {
+    padding: 0.3em 0.5em;
+    margin: 0.5em 0;
+    background-color: var(--in-verde-claro);
+    color: var(--in-txt-osc);
+}
+
+p.final-combate {
+    padding: 0.3em 0.5em;
+    background-color: none;
+    color: var(--in-amarillo);
+    
+    border: var(--in-amarillo) solid 2px !important;
+}
