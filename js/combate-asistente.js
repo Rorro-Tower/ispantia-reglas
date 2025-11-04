@@ -341,7 +341,23 @@ function guardarUnidades() {
     
     document.getElementById('registro-combate').innerHTML = ''; 
     
-    avanzarPaso(3);
+    // ==========================================================
+    // NUEVA LÓGICA: Salto de Paso 3 si Gobernador ataca a Monstruo
+    // ==========================================================
+    
+    // Verificamos si el Gobernador ataca (es atacante) Y si el defensor es un Monstruo
+    const esGobernadorAtacante = (estadoCombate.rolAtacante === 'Gobernador');
+    const esBrujoDefensorMonstruo = (estadoCombate.defensor.clase === 'Monstruo');
+
+    let siguientePaso = 3; // Por defecto va al Paso 3 (Huida)
+    let registro = document.getElementById('registro-combate');
+
+    if (esGobernadorAtacante && esBrujoDefensorMonstruo) {
+        siguientePaso = 4; // Salta la Huida
+        registro.innerHTML += '<p class="alerta">**Nota:** Los Monstruos NO pueden huir. Saltando al Paso 4.</p>';
+    }
+
+    avanzarPaso(siguientePaso);
 }
 
 // PASO 3 (Lógica de Huida)
@@ -474,6 +490,9 @@ function aplicarModificadoresYAvanzar() {
     } else {
         // Si no son Aldeanos Furiosos, preparamos el Paso 5.
 
+        // Llenamos el select de Artilugios SOLO con los permitidos para la unidad.
+        llenarSelectsArtilugiosCondicional(nombreUnidadGov); 
+        
         // [Tu nueva línea para inyectar info del defensor en el Paso 5]
         document.getElementById('info-defensor-artilugio').textContent = 
             `${defensor.nombre} (${defensor.clase}).`;
@@ -482,15 +501,30 @@ function aplicarModificadoresYAvanzar() {
     }
 }
 
-// Llenar los menús desplegables de Artilugios (PASO 5)
-function llenarSelectsArtilugios() {
+// Llenar los menús desplegables de Artilugios (PASO 5) de forma condicional
+function llenarSelectsArtilugiosCondicional(nombreUnidadGov) {
     const selectArt = document.getElementById('select-artilugio');
+    selectArt.innerHTML = ''; // Limpiar opciones anteriores
+
+    // 1. Artilugios disponibles por unidad:
+    let artilugiosPermitidos = ["Ninguno", "Cristal Transmutador"]; // El Ninguno y el Cristal son comunes o base
     
-    for (const nombre in artilugios) {
-        const option = document.createElement('option');
-        option.value = nombre; 
-        option.textContent = nombre;
-        selectArt.appendChild(option);
+    if (nombreUnidadGov === "Escuadrón de Soldados") {
+        artilugiosPermitidos.push("Saeta Cáustica");
+    } else if (nombreUnidadGov === "Guerrero Sagrado") {
+        artilugiosPermitidos.push("Saeta Cáustica");
+        artilugiosPermitidos.push("Orbe Explosivo");
+    }
+
+    // 2. Llenar el select con solo los permitidos
+    for (const nombre of artilugiosPermitidos) {
+        // Debemos asegurarnos que el artilugio exista en el objeto global, si es que lo filtramos por nombre
+        if (artilugios[nombre]) { 
+            const option = document.createElement('option');
+            option.value = nombre; 
+            option.textContent = nombre;
+            selectArt.appendChild(option);
+        }
     }
 }
 
@@ -684,7 +718,7 @@ function finalizarCombate() {
 document.addEventListener('DOMContentLoaded', () => {
     llenarSelectsUnidades();
     llenarSelectsModificadores();
-    llenarSelectsArtilugios(); // Agregado para el Paso 5
+    //llenarSelectsArtilugios(); // Agregado para el Paso 5
     mostrarPaso(1);
-    cargarImagenHeaderAleatoria(); // ¡Añadir esta línea!
+    cargarImagenHeaderAleatoria(); // ¡Cambia la imagen del Header cada vez q se carga el HTML!
 });
