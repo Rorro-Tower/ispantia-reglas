@@ -686,4 +686,5 @@ document.addEventListener('DOMContentLoaded', () => {
     llenarSelectsModificadores();
     llenarSelectsArtilugios(); // Agregado para el Paso 5
     mostrarPaso(1);
+    cargarImagenHeaderAleatoria(); // ¡Añadir esta línea!
 });
