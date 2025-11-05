@@ -42,6 +42,7 @@ select {
     color: var(--in-txt-claro);
     background-color: var(--gris-pizarra);
     border: var(--gris-agata) solid 4px;
+    width: -webkit-fill-available;
 }
 label, input {
     display: block;

@@ -149,7 +149,7 @@ section {
     padding: 0.5em 0;
     border-bottom: 2px var(--go-cafe-osc) solid;
 }
-#gobernador.juego .fila-debilitador {
+#gobernador.juego .fila-debilitador, .fila-debilitador.nota {
     align-items: flex-start;
 }
 
@@ -179,10 +179,15 @@ section {
     padding: 0.5em;
     border: none;
     background-color: var(--go-cafe-osc);
-    color: var(--in-txt-claro);
     font-size: 1.2rem;
     line-height: 1.6rem;
+}
+
+.caja-potenciador .num-debilitador p {
+    color: var(--in-txt-claro);
     text-align: left;
+    font-size: 1rem;
+    line-height: 1.5rem;
 }
 #gobernador.juego .caja-potenciador h4 {
     color: var(--in-txt-osc);
@@ -409,7 +414,7 @@ footer {
 }
 
 .cafe {
-    color: var(--go-cafe);
+    color: var(--go-cafe-osc);
 }
 
 .azul {
