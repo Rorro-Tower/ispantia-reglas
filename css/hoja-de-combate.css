@@ -83,6 +83,22 @@ button {
     font-weight: 700;
     width: fit-content;
 }
+button.verde {
+    background-color: var(--in-verde-osc);
+    color: var(--in-txt-claro);
+}
+button.verde-claro {
+    background-color: var(--in-verde-claro);
+    color: var(--in-txt-osc);
+}
+button.morado {
+    background-color: var(--in-marco);
+    color: var(--in-txt-claro);
+}
+button.cafe {
+    background-color: var(--go-cafe-osc);
+    color: var(--in-txt-claro);
+}
 
 button:hover {
     background-color: var(--en-rojo-osc)

@@ -50,8 +50,10 @@
                                     <h4 class="potenciador ataque">PASO 1: Iniciativa</h4>
                                     <p>¿Qué bando inicia el ataque?</p>
                                     <div class="d-flex flex-column align-items-center">
-                                        <button onclick="seleccionarBando('atacante')">El Gobernador ataca</button>
-                                        <button onclick="seleccionarBando('defensor')">El Brujo ataca</button>
+                                        <button onclick="seleccionarBando('atacante')" class="cafe">El Gobernador
+                                            ataca</button>
+                                        <button onclick="seleccionarBando('defensor')" class="morado">El Brujo
+                                            ataca</button>
                                     </div>
 
                                 </div>
@@ -75,7 +77,7 @@
                                         <select id="select-brujo"></select>
                                     </div>
                                     <div class="d-flex flex-column align-items-center"><button
-                                            onclick="guardarUnidades()">Continuar al Paso 3</button></div>
+                                            onclick="guardarUnidades()" class="verde">Continuar al Paso 3</button></div>
 
                                 </div>
 
@@ -92,7 +94,7 @@
                                     <p>El defensor, <span id="nombre-defensor"></span>, ¿desea intentar la huida?
                                     </p>
                                     <div class="d-flex flex-column align-items-center">
-                                        <button onclick="iniciarHuida()">Sí, tirar HUÍDA</button>
+                                        <button onclick="iniciarHuida()" class="verde-claro">Sí, tirar HUÍDA</button>
                                         <button onclick="avanzarPaso(4)">No, combatir</button>
                                     </div>
 
@@ -122,7 +124,8 @@
 
 
                                     <div class="d-flex flex-column align-items-center"><button
-                                            onclick="aplicarModificadoresYAvanzar()">Continuar al Combate</button></div>
+                                            onclick="aplicarModificadoresYAvanzar()" class="verde">Continuar al
+                                            Combate</button></div>
 
                                 </div>
                             </div>
@@ -163,7 +166,8 @@
 
 
                                     <div class="d-flex flex-column align-items-center mb-4"><button
-                                            onclick="aplicarArtilugiosYAvanzar()">Continuar al Combate</button></div>
+                                            onclick="aplicarArtilugiosYAvanzar()" class="verde">Continuar al
+                                            Combate</button></div>
 
 
                                 </div>
