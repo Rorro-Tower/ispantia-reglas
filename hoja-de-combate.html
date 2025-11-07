@@ -105,18 +105,18 @@
                     <section id="paso-4" class="caracteristicas paso-oculto">
                         <div class="container">
                             <div class="row">
-                                <div class="col-12 casilla potenciadores">
+                                <div class="col-12 casilla">
 
                                     <h4 class="potenciador ataque">PASO 4: Potenciadores y Debilitadores</h4>
                                     <div class="grupo-modificador">
-                                        <h3>Maldiciones (Brujo)</h3>
+                                        <h5>Maldiciones (Brujo)</h5>
                                         <label for="select-maldicion">Seleccionar Maldición:</label>
                                         <select id="select-maldicion">
                                         </select>
                                     </div>
 
                                     <div class="grupo-modificador">
-                                        <h3>Bendiciones (Gobernador)</h3>
+                                        <h5>Bendiciones (Gobernador)</h5>
                                         <label for="select-bendicion">Seleccionar Bendición:</label>
                                         <select id="select-bendicion">
                                         </select>
@@ -146,28 +146,28 @@
                             <div class="row">
                                 <div class="col-12 casilla">
 
-                                    <h4 class="potenciador ataque">PASO 5: Artilugios</h4>
-                                    <p>Selecciona el artilugio que usarás contra
-                                        <span id="info-defensor-artilugio"></span>
-                                    </p>
-                                    <div class="grupo-modificador">
-                                        <h3>Artilugio</h3>
-                                        <label for="select-artilugio">Seleccionar Artilugio:</label>
-                                        <select id="select-artilugio">
+                                    <h4 class="potenciador ataque">PASO 5: Seleccionar Artilugios</h4>
+                                    <p>Las fuerzas del <span class="rol-nombre">Gobernador</span> combaten contra <span
+                                            id="info-defensor-artilugio"></span></p>
+                                    <div id="grupo-cristal" class="grupo-artilugio" style="display:none;">
+                                        <label for="select-cristal">Seleciona tu opción para el artilugio:</label>
+                                        <select id="select-cristal">
+                                            <option value="Ninguno">No tengo ninguno</option>
+                                            <option value="Cristal Transmutador">Tengo un Cristal Transmutador</option>
                                         </select>
                                     </div>
-                                    <div id="grupo-cantidad-orbe" class="grupo-modificador" style="display: none;">
-                                        <label for="select-cantidad-orbe">Cantidad de Orbes Explosivos (Máx. 2):</label>
-                                        <select id="select-cantidad-orbe">
-                                            <option value="1">1 Orbe</option>
-                                            <option value="2">2 Orbes</option>
-                                        </select>
+                                    <div id="grupo-saeta" class="grupo-artilugio" style="display:none;">
+                                        <label for="select-cantidad-saeta">Usos de Saeta Cáustica (+1D4 Físico):</label>
+                                        <select id="select-cantidad-saeta"></select>
                                     </div>
-
+                                    <div id="grupo-orbe" class="grupo-artilugio" style="display:none;">
+                                        <label for="select-cantidad-orbe">Usos de Orbe Explosivo (+1D8 Físico):</label>
+                                        <select id="select-cantidad-orbe"></select>
+                                    </div>
 
                                     <div class="d-flex flex-column align-items-center mb-4"><button
-                                            onclick="aplicarArtilugiosYAvanzar()" class="verde">Continuar al
-                                            Combate</button></div>
+                                            onclick="aplicarArtilugiosYAvanzar()" class="verde">Confirmar Artilugios y
+                                            Continuar</button></div>
 
 
                                 </div>

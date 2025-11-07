@@ -62,7 +62,7 @@ input[type="number"] {
     margin-top: 5px;
 }
 
-.grupo-unidad {
+.grupo-unidad, .grupo-modificador {
     padding: 0.5em;
     margin-bottom: 20px;
     border: 2px dashed rgba(255, 255, 255, 0.2); /* Azul de acento */
@@ -110,6 +110,9 @@ button:visited {
     background-color: var(--en-rojo-osc)
 }
 
+#registro-combate {
+    width: -webkit-fill-available;
+}
 
 #registro-combate p {
     font-size: 0.9rem;
@@ -125,6 +128,8 @@ button:visited {
 .paso-oculto {
     display: none;
 }
+
+
 
 /*------ HEADER ------*/
 header {
@@ -225,7 +230,7 @@ h5 {
 .casilla h4.potenciador,
 .casilla h4.debilitador {
     position: relative;
-    text-align: left;
+    text-align: center;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -551,9 +556,7 @@ footer {
     text-transform: uppercase;
     font-weight: bold;
 }
-#ganador-combate span {
-    color: var(--in-verde-claro);
-}
+
 #recursos-obtenidos p {
     padding: 0.3em 0.5em 0.3em 1.5em;
     background-color: var(--gris-pizarra);
@@ -563,7 +566,7 @@ footer {
     text-align: left;
     width: fit-content;
 }
-#recursos-obtenidos span {
+#recursos-obtenidos span.recursos {
     display: inline-block;
     padding: 0.5em;
     border-radius: 50px;
@@ -574,6 +577,14 @@ footer {
     background-color: var(--in-amarillo);
     text-align: center;
 }
+#ganador-combate span.nombre-ganador {
+    display: inline-block;
+    padding: 0.5em;
+    background-color: var(--in-verde-claro);
+    color: var(--in-txt-osc);
+    font-family: 'draconisregular', sans-serif !important;
+}
+
 
 p.exito {
     background-color: var(--in-verde-claro);

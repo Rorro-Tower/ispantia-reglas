@@ -162,7 +162,7 @@ const artilugios = {
     },
     "Saeta Cáustica": {
         tipo: "Físico", // Afecta a Encarnado y Monstruo
-        // Dado Adicional D4 (consumible)
+        // Dado Adicional D4 (ahora consumible)
         efectos: {
             "Escuadrón de Soldados": { ataqueFijo: 0, dadoAdicional: 4 }, 
             "Guerrero Sagrado": { ataqueFijo: 0, dadoAdicional: 4 },      
@@ -180,24 +180,13 @@ const artilugios = {
 
 // Objeto para guardar el estado y los datos del combate (usando copias de la unidad)
 let estadoCombate = {
-    atacante: { 
-        nombre: 'N/A', ataqueBase: 0, salud: 0, modificador: 0, hpInicial: 0, atributosFijos: {}, 
-        artilugioAtaqueFijo: 0, artilugioDadoAdicional: 0,
-        // NUEVAS PROPIEDADES PARA CONSUMIBLES MÚLTIPLES
-        saetaUsosRestantes: 0,      // Usos restantes de Saeta Cáustica
-        orbeUsosRestantes: 0        // Usos restantes de Orbe Explosivo
-    },
-    defensor: { 
-        nombre: 'N/A', ataqueBase: 0, salud: 0, modificador: 0, hpInicial: 0, atributosFijos: {}, 
-        artilugioAtaqueFijo: 0, artilugioDadoAdicional: 0,
-        // NUEVAS PROPIEDADES 
-        saetaUsosRestantes: 0,      
-        orbeUsosRestantes: 0        
-    },
+    atacante: { nombre: 'N/A', ataqueBase: 0, salud: 0, modificador: 0, hpInicial: 0, atributosFijos: {}, artilugioAtaqueFijo: 0, artilugioDadoAdicional: 0 },
+    defensor: { nombre: 'N/A', ataqueBase: 0, salud: 0, modificador: 0, hpInicial: 0, atributosFijos: {}, artilugioAtaqueFijo: 0, artilugioDadoAdicional: 0 },
     rolAtacante: null, 
     rolDefensor: null,
     iniciativa: null,
     ronda: 0,
+    artilugioUsosRestantes: 0 // Usado para Saeta Cáustica y Orbe Explosivo (consumibles)
 };
 
 
@@ -321,10 +310,7 @@ function guardarUnidades() {
     const baseUnitProps = { 
         modificador: 0, 
         artilugioAtaqueFijo: 0, 
-        artilugioDadoAdicional: 0,
-        // NUEVO: Usos de consumibles (0 por defecto)
-        saetaUsosRestantes: 0,
-        orbeUsosRestantes: 0
+        artilugioDadoAdicional: 0 
     };
 
     // Crear una copia profunda de la unidad para poder modificar su HP, Ataque y Atributos
@@ -421,73 +407,85 @@ function llenarSelectsModificadores() {
     }
 }
 
+// Función para manejar la visibilidad del select de cantidad si se selecciona un Artilugio Consumible
+function manejarVisibilidadCantidadOrbe() {
+    const selectArt = document.getElementById('select-artilugio');
+    const grupoOrbe = document.getElementById('grupo-cantidad-orbe');
 
-// NUEVA FUNCIÓN AUXILIAR para rellenar los selects de cantidad de consumibles
-function precargarSelectCantidad(selectId, nombreArtilugio) {
-    const selectCantidad = document.getElementById(selectId);
-    if (!selectCantidad) return;
+    if (!grupoOrbe || !selectArt) {
+        return; 
+    }
     
-    selectCantidad.innerHTML = ''; // Limpiar opciones
+    const artilugioSeleccionado = selectArt.value;
+    const esConsumible = (artilugioSeleccionado === "Orbe Explosivo" || artilugioSeleccionado === "Saeta Cáustica");
     
-    // Opción por defecto (0 usos)
-    let optionNinguno = document.createElement('option');
-    optionNinguno.value = 0;
-    optionNinguno.textContent = `0 ${nombreArtilugio}s`;
-    selectCantidad.appendChild(optionNinguno);
-
-    // Opciones de 1 y 2 usos
-    for (let i = 1; i <= 2; i++) {
-        const option = document.createElement('option');
-        option.value = i;
-        const nombrePlural = (i === 1) ? nombreArtilugio : nombreArtilugio + 's';
-        option.textContent = `${i} ${nombrePlural}`; 
-        selectCantidad.appendChild(option);
+    // Si el artilugio es 'Orbe Explosivo' O 'Saeta Cáustica', mostrar el selector de cantidad.
+    if (esConsumible) {
+        
+        // --- Lógica para actualizar la etiqueta del Select ---
+        const selectCantidad = grupoOrbe.querySelector('#select-cantidad-orbe');
+        if (selectCantidad) {
+            
+            // 1. Limpiar opciones existentes
+            selectCantidad.innerHTML = '';
+            
+            // 2. Crear las nuevas opciones con el nombre del artilugio seleccionado
+            for (let i = 1; i <= 2; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                // Usar el nombre del artilugio
+                const nombrePlural = (i === 1) ? artilugioSeleccionado : artilugioSeleccionado + 's';
+                option.textContent = `${i} ${nombrePlural}`; 
+                selectCantidad.appendChild(option);
+            }
+        }
+        
+        // Opcional: Actualizar la etiqueta principal
+        const label = grupoOrbe.querySelector('label');
+        if (label) {
+             label.textContent = `Cantidad de ${artilugioSeleccionado}s (Máx. 2):`;
+        }
+        
+        grupoOrbe.style.display = 'block';
+    } else {
+        grupoOrbe.style.display = 'none';
     }
 }
 
-// Llenar los menús desplegables de Artilugios (PASO 5) de forma condicional
-function llenarSelectsArtilugiosCondicional(unidadGobernador, unidadBrujo) {
-    
-    // Ocultar todos los grupos por defecto
-    // (Asumiendo que tienes IDs: grupo-cristal, grupo-saeta, grupo-orbe en tu HTML)
-    const grupoCristal = document.getElementById('grupo-cristal');
-    const grupoSaeta = document.getElementById('grupo-saeta');
-    const grupoOrbe = document.getElementById('grupo-orbe');
 
-    if (grupoCristal) grupoCristal.style.display = 'none';
-    if (grupoSaeta) grupoSaeta.style.display = 'none';
-    if (grupoOrbe) grupoOrbe.style.display = 'none';
+// Llenar los menús desplegables de Artilugios (PASO 5) de forma condicional
+function llenarSelectsArtilugiosCondicional(nombreUnidadGov) {
+    const selectArt = document.getElementById('select-artilugio');
+    selectArt.innerHTML = ''; // Limpiar opciones anteriores
+
+    // 1. Artilugios disponibles por unidad:
+    let artilugiosPermitidos = ["Ninguno"]; 
     
-    // === 1. Lógica para Artilugios Espirituales (CRISTAL TRANSMUTADOR) ===
-    
-    const esBrujoInmaterial = (unidadBrujo.clase === 'Inmaterial');
-    const puedeUsarCristal = ["Vigilante", "Escuadrón de Soldados", "Guerrero Sagrado"].includes(unidadGobernador.nombre);
-    
-    if (esBrujoInmaterial && puedeUsarCristal && grupoCristal) {
-        grupoCristal.style.display = 'block';
+    if (nombreUnidadGov === "Vigilante") {
+        artilugiosPermitidos.push("Cristal Transmutador");
+    } else if (nombreUnidadGov === "Escuadrón de Soldados") {
+        artilugiosPermitidos.push("Cristal Transmutador");
+        artilugiosPermitidos.push("Saeta Cáustica");
+    } else if (nombreUnidadGov === "Guerrero Sagrado") {
+        artilugiosPermitidos.push("Cristal Transmutador");
+        artilugiosPermitidos.push("Saeta Cáustica");
+        artilugiosPermitidos.push("Orbe Explosivo");
     }
 
-    // === 2. Lógica para Artilugios Físicos (SAETA y ORBE) ===
-
-    const esBrujoFisico = (unidadBrujo.clase === 'Encarnado' || unidadBrujo.clase === 'Monstruo');
+    // 2. Llenar el select con solo los permitidos
+    for (const nombre of artilugiosPermitidos) {
+        if (artilugios[nombre]) { 
+            const option = document.createElement('option');
+            option.value = nombre; 
+            option.textContent = nombre;
+            selectArt.appendChild(option);
+        }
+    }
     
-    if (esBrujoFisico) {
-        
-        // --- SAETA CÁUSTICA (D4) ---
-        const puedeUsarSaeta = ["Escuadrón de Soldados", "Guerrero Sagrado"].includes(unidadGobernador.nombre);
-        if (puedeUsarSaeta && grupoSaeta) {
-            grupoSaeta.style.display = 'block';
-             // Asegurar que el select de Saeta tenga 1 o 2
-            precargarSelectCantidad('select-cantidad-saeta', 'Saeta Cáustica');
-        }
-
-        // --- ORBE EXPLOSIVO (D8) ---
-        const puedeUsarOrbe = (unidadGobernador.nombre === "Guerrero Sagrado");
-        if (puedeUsarOrbe && grupoOrbe) {
-            grupoOrbe.style.display = 'block';
-            // Asegurar que el select de Orbe tenga 1 o 2
-            precargarSelectCantidad('select-cantidad-orbe', 'Orbe Explosivo');
-        }
+    // También aseguramos que el selector de cantidad de Orbe esté oculto al recargar este select
+    const grupoOrbe = document.getElementById('grupo-cantidad-orbe');
+    if (grupoOrbe) {
+        grupoOrbe.style.display = 'none';
     }
 }
 
@@ -519,10 +517,8 @@ function aplicarModificadoresYAvanzar() {
     if (efectosEnGov && Object.keys(efectosEnGov).length > 0) {
         for (const atributo in efectosEnGov) {
             if (unidadGobernador.atributosFijos && unidadGobernador.atributosFijos[atributo] !== undefined) {
-                // Asegurarse de que el valor no sea negativo. (El atributo fijo no puede ser menor a 0)
-                const nuevoValor = unidadGobernador.atributosFijos[atributo] + efectosEnGov[atributo];
-                unidadGobernador.atributosFijos[atributo] = Math.max(0, nuevoValor); 
-                logModificadores.push(`Maldición: ${unidadGobernador.nombre} recibe ${efectosEnGov[atributo]} a ${atributo} (actual: ${unidadGobernador.atributosFijos[atributo]}).`);
+                unidadGobernador.atributosFijos[atributo] += efectosEnGov[atributo]; 
+                logModificadores.push(`Maldición: ${unidadGobernador.nombre} recibe ${atributo} ${efectosEnGov[atributo]}.`);
             }
         }
     }
@@ -565,7 +561,7 @@ function aplicarModificadoresYAvanzar() {
         <strong>${defensor.nombre}</strong> (HP:${defensor.salud}, A:${defensor.ataqueBase})`;
 
     let registro = document.getElementById('registro-combate');
-    registro.innerHTML = '<h5>Registro de Modificadores:</h5>' + logModificadores.map(log => `<p class="mod-log">${log}</p>`).join('');
+    registro.innerHTML = '<h4>Registro de Modificadores:</h4>' + logModificadores.map(log => `<p class="mod-log">${log}</p>`).join('');
 
     // === LÓGICA CONDICIONAL PARA SALTAR EL PASO 5 ===
 
@@ -579,9 +575,10 @@ function aplicarModificadoresYAvanzar() {
     } else {
         // Si no son Aldeanos Furiosos, preparamos el Paso 5.
 
-        // Llenamos y mostramos condicionalmente los selectores de Artilugios.
-        llenarSelectsArtilugiosCondicional(unidadGobernador, unidadBrujo); 
+        // Llenamos el select de Artilugios SOLO con los permitidos para la unidad.
+        llenarSelectsArtilugiosCondicional(nombreUnidadGov); 
         
+        // [Tu nueva línea para inyectar info del defensor en el Paso 5]
         document.getElementById('info-defensor-artilugio').textContent = 
             `${defensor.nombre} (${defensor.clase}).`;
         
@@ -589,126 +586,107 @@ function aplicarModificadoresYAvanzar() {
     }
 }
 
-// Función auxiliar para publicar el log y avanzar
-function publicarLogYAvazar(logArray) {
-    let registro = document.getElementById('registro-combate');
-    registro.innerHTML += '<h5>Registro de Artilugios:</h5>' + logArray.map(log => `<p class="mod-log">${log}</p>`).join('');
-
-    // Ocultar selects de artilugios al avanzar (por limpieza)
-    const grupos = ['grupo-cristal', 'grupo-saeta', 'grupo-orbe'];
-    grupos.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.style.display = 'none';
-    });
-
-    avanzarPaso(6); // Ir al paso de combate
-}
-
 
 // PASO 5 - Aplicar Artilugios y Avanzar
 function aplicarArtilugiosYAvanzar() {
-    
-    const { atacante, defensor, rolAtacante } = estadoCombate;
-    let logArtilugio = [];
-    
-    const unidadGobernador = (rolAtacante === 'Gobernador') ? atacante : defensor;
-    const unidadBrujo = (rolAtacante === 'Brujo') ? atacante : defensor;
-
-    // Reiniciar modificadores antes de aplicar los nuevos
-    unidadGobernador.artilugioAtaqueFijo = 0;
-    unidadGobernador.artilugioDadoAdicional = 0;
-    unidadGobernador.saetaUsosRestantes = 0;
-    unidadGobernador.orbeUsosRestantes = 0;
-
-    // Si la unidad no puede usar artilugios, salimos después de registrar.
-    if (!unidadGobernador.atributosFijos || unidadGobernador.nombre === "Aldeanos Furiosos") {
-        logArtilugio.push(`La unidad ${unidadGobernador.nombre} no utiliza Artilugios.`);
-        publicarLogYAvazar(logArtilugio);
+    const selectArt = document.getElementById('select-artilugio');
+    // Si el select no está cargado (por error o por navegación incorrecta), salimos.
+    if (!selectArt) {
+        console.error("Error: El select de artilugios no se encontró.");
         return;
     }
+    
+    const artilugioSeleccionado = selectArt.value;
+    const datosArt = artilugios[artilugioSeleccionado];
+    
+    const { atacante, defensor, rolAtacante, rolDefensor } = estadoCombate;
+    let logArtilugio = [];
+    let usosArtilugio = 0; // Usamos un nombre genérico para la cantidad de usos
 
-    const nombreGov = unidadGobernador.nombre;
-    const claseBrujo = unidadBrujo.clase;
+    const unidadGobernador = (rolAtacante === 'Gobernador') ? atacante : defensor;
+    const unidadBrujo = (rolAtacante === 'Brujo') ? atacante : defensor;
+    
+    // Reiniciar usos antes de empezar, para evitar arrastrar usos de un combate anterior
+    estadoCombate.artilugioUsosRestantes = 0; 
 
-    // ==========================================================
-    // A. CRISTAL TRANSMUTADOR (Fijo, Espiritual)
-    // ==========================================================
-    const selectCristal = document.getElementById('select-cristal');
-    if (selectCristal && selectCristal.value === "Cristal Transmutador") {
-        const datosCristal = artilugios["Cristal Transmutador"];
-        const efectosCristal = datosCristal.efectos[nombreGov];
+    // Si se seleccionó un artilugio (y la unidad es del Gobernador)
+    if (artilugioSeleccionado !== "Ninguno" && unidadGobernador.atributosFijos) {
+        const nombreGov = unidadGobernador.nombre;
+        const claseBrujo = unidadBrujo.clase;
+        const efectosUnidad = datosArt.efectos[nombreGov];
         
-        // Solo aplica si el enemigo es Inmaterial
-        if (claseBrujo === 'Inmaterial' && efectosCristal) {
-            unidadGobernador.artilugioAtaqueFijo = efectosCristal.ataqueFijo;
-            logArtilugio.push(`Usando Cristal Transmutador: +${efectosCristal.ataqueFijo} Ataque Espiritual.`);
-        } else {
-            logArtilugio.push(`Cristal Transmutador seleccionado pero no aplicable contra ${unidadBrujo.nombre} (${claseBrujo}).`);
-        }
-    }
-
-    // ==========================================================
-    // B. SAETA CÁUSTICA (Consumible, Físico, D4)
-    // ==========================================================
-    const selectSaeta = document.getElementById('select-cantidad-saeta');
-    let usosSaeta = 0;
-    if (selectSaeta) {
-        usosSaeta = parseInt(selectSaeta.value) || 0;
-    }
-
-    if (usosSaeta > 0) {
-        const datosSaeta = artilugios["Saeta Cáustica"];
-        const efectosSaeta = datosSaeta.efectos[nombreGov];
+        // >>> LÓGICA DE CANTIDAD PARA ARTILUGIOS CONSUMIBLES (Saeta y Orbe) <<<
+        const esArtilugioConsumible = (artilugioSeleccionado === "Orbe Explosivo" || artilugioSeleccionado === "Saeta Cáustica");
         
-        // Solo aplica si el enemigo es Físico
-        if (claseBrujo !== 'Inmaterial' && efectosSaeta) {
-            unidadGobernador.saetaUsosRestantes = usosSaeta;
-            logArtilugio.push(`Saeta Cáustica (+1D4) seleccionada con ${usosSaeta} usos.`);
-        } else {
-            logArtilugio.push(`Saeta Cáustica seleccionada (${usosSaeta} usos) pero no aplicable contra ${unidadBrujo.nombre} (${claseBrujo}).`);
-        }
-    }
-    
-    // ==========================================================
-    // C. ORBE EXPLOSIVO (Consumible, Físico, D8)
-    // ==========================================================
-    const selectOrbe = document.getElementById('select-cantidad-orbe');
-    let usosOrbe = 0;
-    if (selectOrbe) {
-        usosOrbe = parseInt(selectOrbe.value) || 0;
-    }
+        if (esArtilugioConsumible) {
+            const selectCantidad = document.getElementById('select-cantidad-orbe');
+            
+            if (selectCantidad) {
+                // Obtener el valor del select y convertir a entero
+                usosArtilugio = parseInt(selectCantidad.value) || 0; 
+            } else {
+                usosArtilugio = 0; // Si no existe el select (error), no se usa
+            }
 
-    if (usosOrbe > 0 && nombreGov === "Guerrero Sagrado") {
-        const datosOrbe = artilugios["Orbe Explosivo"];
-        const efectosOrbe = datosOrbe.efectos[nombreGov];
-
-        // Solo aplica si el enemigo es Físico
-        if (claseBrujo !== 'Inmaterial' && efectosOrbe) {
-            unidadGobernador.orbeUsosRestantes = usosOrbe;
-            logArtilugio.push(`Orbe Explosivo (+1D8) seleccionada con ${usosOrbe} usos.`);
-        } else {
-            logArtilugio.push(`Orbe Explosivo seleccionada (${usosOrbe} usos) pero no aplicable contra ${unidadBrujo.nombre} (${claseBrujo}).`);
+            if (usosArtilugio < 1) {
+                logArtilugio.push(`${artilugioSeleccionado} no fue utilizado (cantidad 0).`);
+            } else {
+                // Si se usaron, guardamos la cantidad para el control de rondas
+                estadoCombate.artilugioUsosRestantes = usosArtilugio;
+            }
         }
-    }
-    
-    // ==========================================================
-    // D. ESTABLECER DADO ADICIONAL PRINCIPAL (PARA EL PASO 6)
-    // ==========================================================
-    
-    // Orbe (D8) tiene preferencia sobre Saeta (D4) si ambos fueron seleccionados y aplican.
-    if (unidadGobernador.orbeUsosRestantes > 0) {
-        unidadGobernador.artilugioDadoAdicional = artilugios["Orbe Explosivo"].efectos[nombreGov].dadoAdicional; // 8
-    } else if (unidadGobernador.saetaUsosRestantes > 0) {
-        unidadGobernador.artilugioDadoAdicional = artilugios["Saeta Cáustica"].efectos[nombreGov].dadoAdicional; // 4
+        // >>> FIN LÓGICA CONSUMIBLES <<<
+
+        // 1. Determinar el tipo de ataque que aplica el artilugio
+        const tipoAtaque = (claseBrujo === 'Inmaterial') ? 'Espiritual' : 'Físico';
+        
+        // 2. Aplicar solo si la unidad tiene efectos definidos y si el tipo de artilugio coincide con la clase del Brujo
+        //    Y, si es Consumible, solo si la cantidad es > 0
+        if (efectosUnidad && datosArt.tipo === tipoAtaque && (!esArtilugioConsumible || usosArtilugio > 0)) {
+            
+            // Limpiamos los modificadores de Artilugio antes de reasignar
+            unidadGobernador.artilugioAtaqueFijo = 0;
+            unidadGobernador.artilugioDadoAdicional = 0;
+            
+            // Aplicar bono fijo (Cristal Transmutador)
+            if (efectosUnidad.ataqueFijo > 0) {
+                unidadGobernador.artilugioAtaqueFijo = efectosUnidad.ataqueFijo;
+                logArtilugio.push(`${nombreGov} usa ${artilugioSeleccionado}: +${efectosUnidad.ataqueFijo} Ataque ${tipoAtaque}.`);
+            }
+            
+            // Aplicar dado adicional (Saeta y Orbe)
+            if (efectosUnidad.dadoAdicional > 0) {
+                unidadGobernador.artilugioDadoAdicional = efectosUnidad.dadoAdicional;
+                
+                // Si es consumible, especificamos los usos
+                if (esArtilugioConsumible) {
+                     logArtilugio.push(`${nombreGov} usa ${artilugioSeleccionado}: +1D${efectosUnidad.dadoAdicional} (Usos: ${usosArtilugio}).`);
+                } else {
+                    logArtilugio.push(`${nombreGov} usa ${artilugioSeleccionado}: +1D${efectosUnidad.dadoAdicional} Ataque ${tipoAtaque}.`);
+                }
+            }
+        } else if (artilugioSeleccionado !== "Ninguno" && !esArtilugioConsumible) {
+            // Caso: El artilugio (que NO es consumible, solo Cristal) no aplica por unidad o clase de enemigo
+            logArtilugio.push(`${nombreGov} seleccionó ${artilugioSeleccionado}, pero **no aplica** contra ${unidadBrujo.nombre} (${claseBrujo}).`);
+        } else if (esArtilugioConsumible && usosArtilugio === 0) {
+             // Caso: El artilugio consumible fue seleccionado pero con 0 usos
+             logArtilugio.push(`Se seleccionó ${artilugioSeleccionado}, pero no se especificó la cantidad de usos.`);
+        }
     } else {
-        unidadGobernador.artilugioDadoAdicional = 0;
+        logArtilugio.push(`No se seleccionó Artilugio.`);
     }
 
-    if (unidadGobernador.saetaUsosRestantes > 0 && unidadGobernador.orbeUsosRestantes > 0) {
-        logArtilugio.push(`¡Guerrero Sagrado activó DOBLE CONSUMIBLE! Principal: Orbe D8. Secundario: Saeta D4.`);
+    // Ocultar el selector de cantidad de consumibles
+    const grupoOrbe = document.getElementById('grupo-cantidad-orbe');
+    if (grupoOrbe) {
+        grupoOrbe.style.display = 'none';
     }
 
-    publicarLogYAvazar(logArtilugio);
+    // Publicar log y avanzar al combate
+    let registro = document.getElementById('registro-combate');
+    registro.innerHTML += '<h4>Registro de Artilugios:</h4>' + logArtilugio.map(log => `<p class="mod-log">${log}</p>`).join('');
+
+    avanzarPaso(6); // Ir al paso de combate
 }
 
 
@@ -745,74 +723,47 @@ function ejecutarRonda() {
             logModificadoresRonda += `¡${atacante.nombre} da un Golpe de Poder! (+${golpe})!`;
         }
         
-        // B. Artilugio (Ataque Fijo y Dado Adicional, incluyendo Consumibles Múltiples)
+        // B. Artilugio (Ataque Fijo y Dado Adicional)
         if (atacante.artilugioAtaqueFijo > 0 || atacante.artilugioDadoAdicional > 0) {
             
-            // --- 1. APLICACIÓN DEL ARTILUGIO FIJO (CRISTAL TRANSMUTADOR) ---
-            if (atacante.artilugioAtaqueFijo > 0) {
-                resA.totalAtaque += atacante.artilugioAtaqueFijo;
-                logModificadoresRonda += (logModificadoresRonda ? " | " : "") + `Cristal Fijo: +${atacante.artilugioAtaqueFijo}.`;
+            // --- CONTROL CONSUMIBLE (SAETA CÁUSTICA Y ORBE EXPLOSIVO) ---
+            // Los consumibles tienen Dado Adicional D4 (Saeta) o D8 (Orbe).
+            const dadoArtilugio = atacante.artilugioDadoAdicional;
+            const esArtilugioConsumible = (dadoArtilugio === 8 || dadoArtilugio === 4); 
+            let aplicaArtilugio = true;
+            
+            if (esArtilugioConsumible && estadoCombate.artilugioUsosRestantes <= 0) {
+                aplicaArtilugio = false; // No quedan usos
             }
+            // --- FIN CONTROL CONSUMIBLE ---
             
-            // --- 2. APLICACIÓN DEL DADO ADICIONAL (PRINCIPAL Y SECUNDARIO) ---
-            
-            let dadoAdicionalUsado = 0; // Para el log
-            
-            // Lógica para Consumibles (Saeta D4, Orbe D8)
-            if (atacante.artilugioDadoAdicional > 0) {
+            if (aplicaArtilugio) {
                 
-                // Determinar qué dado estamos usando (si hay usos restantes del dadoPrincipal)
-                const dadoPrincipal = atacante.artilugioDadoAdicional;
+                // Bono Fijo (Aplica para Cristal Transmutador)
+                resA.totalAtaque += atacante.artilugioAtaqueFijo;
+                logModificadoresRonda += (logModificadoresRonda ? " | " : "") + `Artilugio: +${atacante.artilugioAtaqueFijo} Fijo.`;
                 
-                // Usamos el Dado Principal si tiene usos restantes
-                if ((dadoPrincipal === 8 && atacante.orbeUsosRestantes > 0) || (dadoPrincipal === 4 && atacante.saetaUsosRestantes > 0)) {
-                    
-                    const tiradaExtra = simularTirada(0, dadoPrincipal);
+                // Dado Adicional (Aplica para Saeta y Orbe)
+                if (atacante.artilugioDadoAdicional > 0) {
+                    const tiradaExtra = simularTirada(0, atacante.artilugioDadoAdicional);
                     resA.totalAtaque += tiradaExtra.dado; 
-                    dadoAdicionalUsado = dadoPrincipal;
-                    
-                    // Consumir el uso principal
-                    if (dadoPrincipal === 8) {
-                        atacante.orbeUsosRestantes--;
-                        logModificadoresRonda += (logModificadoresRonda ? " | " : "") + ` Orbe D${dadoPrincipal}: +${tiradaExtra.dado}`;
-                    } else { // D4
-                        atacante.saetaUsosRestantes--;
-                        logModificadoresRonda += (logModificadoresRonda ? " | " : "") + ` Saeta D${dadoPrincipal}: +${tiradaExtra.dado}`;
+                    logModificadoresRonda += (logModificadoresRonda ? " | " : "") + ` Artilugio Dado: +${tiradaExtra.dado} (D${tiradaExtra.numCarasDado})`;
+
+                    // Consumir el uso
+                    if (esArtilugioConsumible) {
+                        estadoCombate.artilugioUsosRestantes--;
+                        logModificadoresRonda += ` [Usos restantes: ${estadoCombate.artilugioUsosRestantes}]`;
+                        
+                        // Si se agotaron, limpiamos el modificador para las siguientes rondas
+                        if (estadoCombate.artilugioUsosRestantes === 0) {
+                           atacante.artilugioAtaqueFijo = 0;
+                           atacante.artilugioDadoAdicional = 0;
+                        }
                     }
-                    
-                    logModificadoresRonda += ` [Usos restantes: ${dadoPrincipal === 8 ? atacante.orbeUsosRestantes : atacante.saetaUsosRestantes}]`;
-
-                    // Si se agota el principal D8, PROMOCIONAR D4 a principal (solo si quedan usos de D4)
-                    if (dadoPrincipal === 8 && atacante.orbeUsosRestantes === 0) {
-                       atacante.artilugioDadoAdicional = (atacante.saetaUsosRestantes > 0) ? 4 : 0;
-                    } else if (dadoPrincipal === 4 && atacante.saetaUsosRestantes === 0) {
-                       atacante.artilugioDadoAdicional = 0; // Se agota
-                    }
-
-                // Lógica de "Artilugio Secundario" (Sólo si el D8 se agotó y el D4 tenía usos)
-                } else if (dadoPrincipal === 8 && atacante.orbeUsosRestantes === 0 && atacante.saetaUsosRestantes > 0) {
-                 
-                     const dadoSecundario = 4; // Saeta D4
-                     const tiradaSecundaria = simularTirada(0, dadoSecundario);
-                     
-                     resA.totalAtaque += tiradaSecundaria.dado;
-                     dadoAdicionalUsado = dadoSecundario;
-                     
-                     // Consumir uso secundario (Saeta)
-                     atacante.saetaUsosRestantes--;
-                     
-                     logModificadoresRonda += (logModificadoresRonda ? " | " : "") + ` Secundario D${dadoSecundario}: +${tiradaSecundaria.dado}. [Usos D4 restantes: ${atacante.saetaUsosRestantes}]`;
-
-                     // Si se agota el secundario, limpiar el dado principal (que ahora es 4)
-                     if (atacante.saetaUsosRestantes === 0) {
-                        atacante.artilugioDadoAdicional = 0;
-                     }
-                } else {
-                    logModificadoresRonda += (logModificadoresRonda ? " | " : "") + ` Dado Adicional: ¡Usos agotados!`;
-                    // Limpiar artilugioDadoAdicional si aún no se hizo
-                    atacante.artilugioDadoAdicional = 0; 
                 }
-            } 
+            } else if (esArtilugioConsumible && estadoCombate.artilugioUsosRestantes === 0) {
+                 logModificadoresRonda += (logModificadoresRonda ? " | " : "") + ` Artilugio Consumible: ¡Usos agotados!`;
+            }
         }
     }
     
@@ -838,7 +789,7 @@ function ejecutarRonda() {
     // --- REGISTRAR SÓLO LA ÚLTIMA RONDA ---
     
     let registro = document.getElementById('registro-combate');
-    let nuevoRegistro = '<h5>Registro de Rondas:</h5>';
+    let nuevoRegistro = '<h4>Registro de Rondas:</h4>';
     
     // Información de Modificadores (Golpe de Poder / Artilugio)
     if (logModificadoresRonda) {
@@ -885,21 +836,15 @@ function finalizarCombate() {
 
     for (const recurso in recursos) {
         if (recursos[recurso] > 0) {
-            recursosHTML += `<p>${recurso}: <span class="recursos">${recursos[recurso]}</span></p>`;
+            recursosHTML += `<p>${recurso}: <span>${recursos[recurso]}</span></p>`;
         }
     }
 
-    // === LÍNEA MODIFICADA (GANADOR) ===
-    document.getElementById('ganador-combate').innerHTML = `Vencedor: <span class="nombre-ganador">${ganador}</span>`;
-    // ===================================
-    
-    // === LÍNEA MODIFICADA (PERDEDOR/RECURSOS) ===
+    document.getElementById('ganador-combate').textContent = `Vencedor: ${ganador}`;
     document.getElementById('recursos-obtenidos').innerHTML = `
         <h4>Recursos obtenidos de ${perdedor.nombre}:</h4>
         ${recursosHTML || '<p>— Sin recursos por derrota. —</p>'}
     `;
-    // =============================================
-
     registro.innerHTML += `<p class="final-combate">EL COMBATE HA TERMINADO</p>`;
 
     mostrarPaso('final');
@@ -914,5 +859,13 @@ document.addEventListener('DOMContentLoaded', () => {
     llenarSelectsUnidades();
     llenarSelectsModificadores();
     
+    // Listener para mostrar/ocultar el selector de cantidad de artilugios
+    const selectArt = document.getElementById('select-artilugio');
+    if (selectArt) {
+        selectArt.addEventListener('change', manejarVisibilidadCantidadOrbe);
+    }
+    
     mostrarPaso(1);
+    // Nota: La función cargarImagenHeaderAleatoria no está incluida, 
+    // pero si la tienes en tu HTML, mantén la llamada.
 });
