@@ -152,7 +152,7 @@ p {
     line-height: 2rem;
     letter-spacing: 1px;
 }
-.combate p span {
+.combate p span.rojo {
     color: var(--en-rojo-osc);
 }
 .combate p span.verde {

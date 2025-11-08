@@ -157,7 +157,9 @@ section {
 .fila-debilitador:last-child {
     border-bottom: none;
 }
-
+.fila-potenciador p {
+    color: var(--in-txt-osc);
+}
 .fila-potenciador p:first-child,
 .fila-debilitador p:first-child {
     text-align: left;
