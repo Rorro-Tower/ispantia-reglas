@@ -141,7 +141,7 @@ h4 {
     font-size: 2rem;
     line-height: 2.5rem;
 }
-h4 span {
+main#gobernador.combate h4 span, main#gobernador.juego h4 span {
     font-family: 'Fourth-Edition Dings';
     font-size: 2em;
     padding-right: 10px;

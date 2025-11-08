@@ -121,7 +121,7 @@ section {
     width: 100%;
 }
 
-.caja-potenciador p {
+.caja-potenciador .fila-debilitador p {
     color: var(--in-txt-osc);
 }
 #gobernador.juego a {
@@ -183,7 +183,7 @@ section {
     line-height: 1.6rem;
 }
 
-.caja-potenciador .num-debilitador p {
+#gobernador .caja-potenciador p.num-debilitador {
     color: var(--in-txt-claro);
     text-align: left;
     font-size: 1rem;
