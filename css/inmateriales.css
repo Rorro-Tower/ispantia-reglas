@@ -32,6 +32,10 @@ header .categoria.casilla {
     width: 100%;
 }
 
+header .casilla h1 {
+    color: var(--in-divisor);
+}
+
 header .casilla p {
     color: var(--in-txt-osc);
     padding: 0;
