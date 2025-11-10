@@ -42,13 +42,13 @@ const unidadesDisponibles = {
             recursosDerrota: { Miedo: 0, Superstición: 0, Valor: 1, Fe: 1, Conocimiento: 1 } 
         },
         { 
-            nombre: "Fantasma", ataqueBase: 2, salud: 5, clase: "Inmaterial", dadoAtaque: 4,
-            atributosFijos: { Maldicion: 2, Miedo: 0, Supersticion: 0 }, 
+            nombre: "Fantasma", ataqueBase: 3, salud: 5, clase: "Inmaterial", dadoAtaque: 4,
+            atributosFijos: { Maldicion: 3, Miedo: 0, Supersticion: 0 }, 
             recursosDerrota: { Miedo: 0, Superstición: 0, Valor: 2, Fe: 1, Conocimiento: 1 } 
         },
         { 
-            nombre: "Poltergeist", ataqueBase: 3, salud: 6, clase: "Inmaterial", dadoAtaque: 4,
-            atributosFijos: { Maldicion: 3, Miedo: 0, Supersticion: 0 }, 
+            nombre: "Poltergeist", ataqueBase: 4, salud: 6, clase: "Inmaterial", dadoAtaque: 4,
+            atributosFijos: { Maldicion: 4, Miedo: 0, Supersticion: 0 }, 
             recursosDerrota: { Miedo: 0, Superstición: 0, Valor: 3, Fe: 2, Conocimiento: 1 } 
         },
         // Clase Encarnado (usa D6)
