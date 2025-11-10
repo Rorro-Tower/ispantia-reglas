@@ -47,8 +47,8 @@ const unidadesDisponibles = {
             recursosDerrota: { Miedo: 0, Superstición: 0, Valor: 2, Fe: 1, Conocimiento: 1 } 
         },
         { 
-            nombre: "Poltergeist", ataqueBase: 4, salud: 6, clase: "Inmaterial", dadoAtaque: 4,
-            atributosFijos: { Maldicion: 4, Miedo: 0, Supersticion: 0 }, 
+            nombre: "Poltergeist", ataqueBase: 3, salud: 6, clase: "Inmaterial", dadoAtaque: 4,
+            atributosFijos: { Maldicion: 3, Miedo: 0, Supersticion: 0 }, 
             recursosDerrota: { Miedo: 0, Superstición: 0, Valor: 3, Fe: 2, Conocimiento: 1 } 
         },
         // Clase Encarnado (usa D6)
@@ -58,13 +58,13 @@ const unidadesDisponibles = {
             recursosDerrota: { Miedo: 0, Superstición: 0, Valor: 3, Fe: 2, Conocimiento: 2 } 
         },
         { 
-            nombre: "Esqueleto", ataqueBase: 1, salud: 8, clase: "Encarnado", dadoAtaque: 6,
-            atributosFijos: { Frenesí: 1, Miedo: 0, Supersticion: 0 }, 
+            nombre: "Esqueleto", ataqueBase: 3, salud: 8, clase: "Encarnado", dadoAtaque: 6,
+            atributosFijos: { Frenesí: 3, Miedo: 0, Supersticion: 0 }, 
             recursosDerrota: { Miedo: 0, Superstición: 0, Valor: 3, Fe: 3, Conocimiento: 2 } 
         },
         { 
-            nombre: "Demonio", ataqueBase: 2, salud: 9, clase: "Encarnado", dadoAtaque: 6,
-            atributosFijos: { Crueldad: 2, Miedo: 0, Supersticion: 0 }, 
+            nombre: "Demonio", ataqueBase: 4, salud: 9, clase: "Encarnado", dadoAtaque: 6,
+            atributosFijos: { Crueldad: 4, Miedo: 0, Supersticion: 0 }, 
             recursosDerrota: { Miedo: 0, Superstición: 0, Valor: 4, Fe: 3, Conocimiento: 2 } 
         },
         // Clase Monstruo (usa D8, D9, D12)
