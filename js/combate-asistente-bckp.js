@@ -32,7 +32,8 @@ const unidadesDisponibles = {
             atributosFijos: { Fe: 6, Valor: 5, Conocimiento: 3 },  
             recursosDerrota: { Miedo: 10, Superstición: 8, Valor: 0, Fe: 0, Conocimiento: 0 } 
         }
-    ],
+    ]
+    ,
     Brujo: [
         // Clase Inmaterial (usa D4)
         { 
@@ -41,8 +42,8 @@ const unidadesDisponibles = {
             recursosDerrota: { Miedo: 0, Superstición: 0, Valor: 1, Fe: 1, Conocimiento: 1 } 
         },
         { 
-            nombre: "Fantasma", ataqueBase: 2, salud: 5, clase: "Inmaterial", dadoAtaque: 4,
-            atributosFijos: { Maldicion: 2, Miedo: 0, Supersticion: 0 }, 
+            nombre: "Fantasma", ataqueBase: 3, salud: 5, clase: "Inmaterial", dadoAtaque: 4,
+            atributosFijos: { Maldicion: 3, Miedo: 0, Supersticion: 0 }, 
             recursosDerrota: { Miedo: 0, Superstición: 0, Valor: 2, Fe: 1, Conocimiento: 1 } 
         },
         { 
@@ -57,13 +58,13 @@ const unidadesDisponibles = {
             recursosDerrota: { Miedo: 0, Superstición: 0, Valor: 3, Fe: 2, Conocimiento: 2 } 
         },
         { 
-            nombre: "Esqueleto", ataqueBase: 1, salud: 8, clase: "Encarnado", dadoAtaque: 6,
-            atributosFijos: { Frenesí: 1, Miedo: 0, Supersticion: 0 }, 
+            nombre: "Esqueleto", ataqueBase: 3, salud: 8, clase: "Encarnado", dadoAtaque: 6,
+            atributosFijos: { Frenesí: 3, Miedo: 0, Supersticion: 0 }, 
             recursosDerrota: { Miedo: 0, Superstición: 0, Valor: 3, Fe: 3, Conocimiento: 2 } 
         },
         { 
-            nombre: "Demonio", ataqueBase: 2, salud: 9, clase: "Encarnado", dadoAtaque: 6,
-            atributosFijos: { Crueldad: 2, Miedo: 0, Supersticion: 0 }, 
+            nombre: "Demonio", ataqueBase: 4, salud: 9, clase: "Encarnado", dadoAtaque: 6,
+            atributosFijos: { Crueldad: 4, Miedo: 0, Supersticion: 0 }, 
             recursosDerrota: { Miedo: 0, Superstición: 0, Valor: 4, Fe: 3, Conocimiento: 2 } 
         },
         // Clase Monstruo (usa D8, D9, D12)
@@ -88,38 +89,42 @@ const unidadesDisponibles = {
 const maldiciones = {
     "Ninguna": {
         costo: 0,
-        efectosBrujoHPPorClase: { Inmaterial: 0, Encarnado: 0, Monstruo: 0 }, // MODIFICADO
-        efectosGobernador: {}
+        efectosBrujoHPPorClase: { Inmaterial: 0, Encarnado: 0, Monstruo: 0 },
+        efectosGobernador: {},
+        recursosBonus: {} 
     },
     "Niebla Pestilente": {
         costo: 10,
-        efectosBrujoHPPorClase: { Inmaterial: 1, Encarnado: 2, Monstruo: 3 }, // MODIFICADO
+        efectosBrujoHPPorClase: { Inmaterial: 1, Encarnado: 2, Monstruo: 3 },
         efectosGobernador: {
             "Vigilante": { Fe: -1 },
             "Aldeanos Furiosos": {},
             "Escuadrón de Soldados": {},
             "Guerrero Sagrado": {}
-        }
+        },
+        recursosBonus: { Miedo: 1, Superstición: 2 } 
     },
     "Lluvia de Sangre": {
         costo: 20,
-        efectosBrujoHPPorClase: { Inmaterial: 2, Encarnado: 3, Monstruo: 4 }, // MODIFICADO
+        efectosBrujoHPPorClase: { Inmaterial: 2, Encarnado: 3, Monstruo: 4 },
         efectosGobernador: {
             "Vigilante": { Valor: -1 },
             "Aldeanos Furiosos": { Fe: -2 },
             "Escuadrón de Soldados": { Fe: -2 },
             "Guerrero Sagrado": {}
-        }
+        },
+        recursosBonus: { Miedo: 2, Superstición: 3 } 
     },
     "Maldición de Sombras Aladas": {
         costo: 30,
-        efectosBrujoHPPorClase: { Inmaterial: 3, Encarnado: 4, Monstruo: 5 }, // MODIFICADO
+        efectosBrujoHPPorClase: { Inmaterial: 3, Encarnado: 4, Monstruo: 5 },
         efectosGobernador: {
             "Vigilante": { Fe: -2 },
             "Aldeanos Furiosos": { Fe: -3 },
             "Escuadrón de Soldados": { Conocimiento: -1 },
             "Guerrero Sagrado": {}
-        }
+        },
+        recursosBonus: { Miedo: 3, Superstición: 4 } 
     }
 };
 
@@ -128,52 +133,57 @@ const bendiciones = {
         costo: 0,
         efectoGobernadorFe: 0,
         efectoGoberreroSagradoFe: 0,
-        efectosBrujoHP: 0
+        efectosBrujoHP: 0,
+        recursosBonus: {} 
     },
     "Plegaria": {
         costo: 5,
         efectoGobernadorFe: 1, 
         efectoGoberreroSagradoFe: 2, 
         efectosBrujoHP: 1, 
+        recursosBonus: { Valor: 1, Fe: 2 } 
     },
     "Cántico Ferviente": {
         costo: 10,
         efectoGobernadorFe: 2, 
         efectoGoberreroSagradoFe: 3, 
         efectosBrujoHP: 0, 
+        recursosBonus: { Valor: 3, Fe: 2 } 
     },
     "Exorcismo": {
         costo: 15,
         efectoGobernadorFe: 3, 
         efectoGoberreroSagradoFe: 5, 
         efectosBrujoHP: 0, 
+        recursosBonus: { Valor: 4, Fe: 3 } 
     }
 };
 
 const artilugios = {
-    "Ninguno": {},
+    "Ninguno": { recursosBonus: {} }, // Añadido
     "Cristal Transmutador": {
-        tipo: "Espiritual", // Afecta a Inmaterial
+        tipo: "Espiritual", 
         efectos: {
             "Vigilante": { ataqueFijo: 2, dadoAdicional: 0 },
             "Escuadrón de Soldados": { ataqueFijo: 3, dadoAdicional: 0 },
             "Guerrero Sagrado": { ataqueFijo: 4, dadoAdicional: 0 },
-        }
+        },
+        recursosBonus: { Conocimiento: 1 } // NUEVO
     },
     "Saeta Cáustica": {
-        tipo: "Físico", // Afecta a Encarnado y Monstruo
-        // Dado Adicional D4 (consumible)
+        tipo: "Físico", 
         efectos: {
             "Escuadrón de Soldados": { ataqueFijo: 0, dadoAdicional: 4 }, 
             "Guerrero Sagrado": { ataqueFijo: 0, dadoAdicional: 4 },      
-        }
+        },
+        recursosBonus: { Conocimiento: 2 } // NUEVO
     },
     "Orbe Explosivo": {
-        tipo: "Físico", // Afecta a Encarnado y Monstruo
-        // Dado Adicional D8 (consumible)
+        tipo: "Físico", 
         efectos: {
             "Guerrero Sagrado": { ataqueFijo: 0, dadoAdicional: 8 }, 
-        }
+        },
+        recursosBonus: { Conocimiento: 3 } // NUEVO
     }
 };
 
@@ -183,14 +193,12 @@ let estadoCombate = {
     atacante: { 
         nombre: 'N/A', ataqueBase: 0, salud: 0, modificador: 0, hpInicial: 0, atributosFijos: {}, 
         artilugioAtaqueFijo: 0, artilugioDadoAdicional: 0,
-        // NUEVAS PROPIEDADES PARA CONSUMIBLES MÚLTIPLES
-        saetaUsosRestantes: 0,      // Usos restantes de Saeta Cáustica
-        orbeUsosRestantes: 0        // Usos restantes de Orbe Explosivo
+        saetaUsosRestantes: 0,      
+        orbeUsosRestantes: 0        
     },
     defensor: { 
         nombre: 'N/A', ataqueBase: 0, salud: 0, modificador: 0, hpInicial: 0, atributosFijos: {}, 
         artilugioAtaqueFijo: 0, artilugioDadoAdicional: 0,
-        // NUEVAS PROPIEDADES 
         saetaUsosRestantes: 0,      
         orbeUsosRestantes: 0        
     },
@@ -198,6 +206,11 @@ let estadoCombate = {
     rolDefensor: null,
     iniciativa: null,
     ronda: 0,
+    
+    // Almacenar los nombres de los modificadores aplicados
+    maldicionAplicada: 'Ninguna',
+    bendicionAplicada: 'Ninguna',
+    artilugiosGanancia: [], // NUEVO: Para rastrear artilugios usados/activos
 };
 
 
@@ -322,7 +335,6 @@ function guardarUnidades() {
         modificador: 0, 
         artilugioAtaqueFijo: 0, 
         artilugioDadoAdicional: 0,
-        // NUEVO: Usos de consumibles (0 por defecto)
         saetaUsosRestantes: 0,
         orbeUsosRestantes: 0
     };
@@ -355,6 +367,11 @@ function guardarUnidades() {
             atributosFijos: { ...unidadGov.atributosFijos } 
         };
     }
+    
+    // Resetear modificadores de combate guardados
+    estadoCombate.maldicionAplicada = 'Ninguna';
+    estadoCombate.bendicionAplicada = 'Ninguna';
+    estadoCombate.artilugiosGanancia = []; // NUEVO: Limpiar antes de cada combate
     
     document.getElementById('registro-combate').innerHTML = ''; 
     
@@ -496,6 +513,10 @@ function aplicarModificadoresYAvanzar() {
     const maldicionSeleccionada = document.getElementById('select-maldicion').value;
     const bendicionSeleccionada = document.getElementById('select-bendicion').value;
     
+    // Guardar modificadores seleccionados en el estado
+    estadoCombate.maldicionAplicada = maldicionSeleccionada;
+    estadoCombate.bendicionAplicada = bendicionSeleccionada;
+    
     const datosMal = maldiciones[maldicionSeleccionada];
     const datosBen = bendiciones[bendicionSeleccionada];
     
@@ -506,10 +527,8 @@ function aplicarModificadoresYAvanzar() {
     const unidadBrujo = (rolAtacante === 'Brujo') ? atacante : defensor;
 
     // --- A. EFECTOS DE MALDICIONES (BRUJO) ---
-    // 1. HP para la Unidad del Brujo (+HP) - LÓGICA MODIFICADA
+    // 1. HP para la Unidad del Brujo (+HP)
     const claseBrujo = unidadBrujo.clase;
-    
-    // Obtiene el HP adicional basado en la clase de la unidad Brujo
     const hpAdicionalMaldicion = datosMal.efectosBrujoHPPorClase?.[claseBrujo] || 0; 
 
     if (hpAdicionalMaldicion > 0) {
@@ -624,6 +643,9 @@ function aplicarArtilugiosYAvanzar() {
     unidadGobernador.artilugioDadoAdicional = 0;
     unidadGobernador.saetaUsosRestantes = 0;
     unidadGobernador.orbeUsosRestantes = 0;
+    
+    // NUEVO: Limpiar la lista de artilugios para ganancia
+    estadoCombate.artilugiosGanancia = []; 
 
     // Si la unidad no puede usar artilugios, salimos después de registrar.
     if (!unidadGobernador.atributosFijos || unidadGobernador.nombre === "Aldeanos Furiosos") {
@@ -647,6 +669,7 @@ function aplicarArtilugiosYAvanzar() {
         if (claseBrujo === 'Inmaterial' && efectosCristal) {
             unidadGobernador.artilugioAtaqueFijo = efectosCristal.ataqueFijo;
             logArtilugio.push(`Usando Cristal Transmutador: +${efectosCristal.ataqueFijo} Ataque Espiritual.`);
+            estadoCombate.artilugiosGanancia.push("Cristal Transmutador"); // NUEVO
         } else {
             logArtilugio.push(`Cristal Transmutador seleccionado pero no aplicable contra ${unidadBrujo.nombre} (${claseBrujo}).`);
         }
@@ -669,6 +692,7 @@ function aplicarArtilugiosYAvanzar() {
         if (claseBrujo !== 'Inmaterial' && efectosSaeta) {
             unidadGobernador.saetaUsosRestantes = usosSaeta;
             logArtilugio.push(`Saeta Cáustica (+1D4) seleccionada con ${usosSaeta} usos.`);
+            estadoCombate.artilugiosGanancia.push("Saeta Cáustica"); // NUEVO
         } else {
             logArtilugio.push(`Saeta Cáustica seleccionada (${usosSaeta} usos) pero no aplicable contra ${unidadBrujo.nombre} (${claseBrujo}).`);
         }
@@ -691,6 +715,7 @@ function aplicarArtilugiosYAvanzar() {
         if (claseBrujo !== 'Inmaterial' && efectosOrbe) {
             unidadGobernador.orbeUsosRestantes = usosOrbe;
             logArtilugio.push(`Orbe Explosivo (+1D8) seleccionada con ${usosOrbe} usos.`);
+            estadoCombate.artilugiosGanancia.push("Orbe Explosivo"); // NUEVO
         } else {
             logArtilugio.push(`Orbe Explosivo seleccionada (${usosOrbe} usos) pero no aplicable contra ${unidadBrujo.nombre} (${claseBrujo}).`);
         }
@@ -873,37 +898,91 @@ function finalizarCombate() {
     
     let ganador;
     let perdedor;
+    let rolGanador;
     
     if (atacante.salud <= 0 && defensor.salud <= 0) {
         ganador = "¡Doble KO! Ambos han caído.";
         perdedor = { nombre: "N/A", recursosDerrota: {} }; 
+        rolGanador = null;
     } else if (atacante.salud <= 0) {
         ganador = defensor.nombre;
         perdedor = atacante;
+        rolGanador = estadoCombate.rolDefensor;
     } else {
         ganador = atacante.nombre;
         perdedor = defensor;
+        rolGanador = estadoCombate.rolAtacante;
     }
     
-    const recursos = perdedor.recursosDerrota;
-    let recursosHTML = '';
+    // --- 1. LÓGICA DE BONIFICACIÓN POR MODIFICADOR (Maldición/Bendición) ---
+    
+    // Copiar los recursos base del perdedor
+    let recursosFinales = { ...perdedor.recursosDerrota }; 
+    let bonusRecursos = {};
+    let logRecursos = '';
+    
+    if (rolGanador === 'Brujo' && estadoCombate.maldicionAplicada !== 'Ninguna') {
+        bonusRecursos = maldiciones[estadoCombate.maldicionAplicada].recursosBonus || {};
+        logRecursos = ` (Bono por Maldición: ${estadoCombate.maldicionAplicada})`;
+    } else if (rolGanador === 'Gobernador' && estadoCombate.bendicionAplicada !== 'Ninguna') {
+        bonusRecursos = bendiciones[estadoCombate.bendicionAplicada].recursosBonus || {};
+        logRecursos = ` (Bono por Bendición: ${estadoCombate.bendicionAplicada})`;
+    }
 
-    for (const recurso in recursos) {
-        if (recursos[recurso] > 0) {
-            recursosHTML += `<p>${recurso}: <span class="recursos">${recursos[recurso]}</span></p>`;
+    // Sumar los recursos de bonificación a los recursos base
+    for (const recurso in bonusRecursos) {
+        if (bonusRecursos[recurso] > 0) {
+            recursosFinales[recurso] = (recursosFinales[recurso] || 0) + bonusRecursos[recurso];
         }
     }
-
-    // === LÍNEA MODIFICADA (GANADOR) ===
-    document.getElementById('ganador-combate').innerHTML = `Vencedor: <span class="nombre-ganador">${ganador}</span>`;
-    // ===================================
     
-    // === LÍNEA MODIFICADA (PERDEDOR/RECURSOS) ===
+    // --- 2. LÓGICA DE BONIFICACIÓN POR ARTILUGIO (Solo Gobernador) ---
+    
+    if (rolGanador === 'Gobernador' && estadoCombate.artilugiosGanancia.length > 0) {
+        
+        let maxConocimientoBonus = 0;
+        let artilugioConBono = '';
+        
+        // Buscar el artilugio con el mayor bono de Conocimiento aplicado
+        estadoCombate.artilugiosGanancia.forEach(artilugioName => {
+            const artilugioData = artilugios[artilugioName];
+            if (artilugioData && artilugioData.recursosBonus && artilugioData.recursosBonus.Conocimiento) {
+                const currentBonus = artilugioData.recursosBonus.Conocimiento;
+                if (currentBonus > maxConocimientoBonus) {
+                    maxConocimientoBonus = currentBonus;
+                    artilugioConBono = artilugioName;
+                }
+            }
+        });
+
+        if (maxConocimientoBonus > 0) {
+            // Sumar el bono de Conocimiento (asegurándose de que exista el campo)
+            recursosFinales.Conocimiento = (recursosFinales.Conocimiento || 0) + maxConocimientoBonus;
+            // Añadir al log, separándolo del log anterior si ya existe
+            logRecursos += `${logRecursos ? ' y' : ''} (Bono por Artilugio: ${artilugioConBono}, +${maxConocimientoBonus} Conocimiento)`;
+        }
+    }
+    
+    // --- 3. GENERAR EL HTML FINAL ---
+    
+    let recursosHTML = '';
+    
+    for (const recurso in recursosFinales) {
+        if (recursosFinales[recurso] > 0) {
+            recursosHTML += `<p>${recurso}: <span class="recursos">${recursosFinales[recurso]}</span></p>`;
+        }
+    }
+    
+    // --- 4. ACTUALIZAR PANTALLA ---
+
+    // GANADOR
+    document.getElementById('ganador-combate').innerHTML = `Vencedor: <span class="nombre-ganador">${ganador}</span>`;
+    
+    // PERDEDOR/RECURSOS
     document.getElementById('recursos-obtenidos').innerHTML = `
-        <h4>Recursos obtenidos de <span class="nombre-perdedor">${perdedor.nombre}</span>:</h4>
+        <h4>Recursos obtenidos de <span class="nombre-perdedor">${perdedor.nombre}</span>${logRecursos}:</h4>
         ${recursosHTML || '<p>— Sin recursos por derrota. —</p>'}
     `;
-    // =============================================
 
     registro.innerHTML += `<p class="final-combate">EL COMBATE HA TERMINADO</p>`;
 
