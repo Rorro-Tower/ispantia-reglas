@@ -376,6 +376,14 @@ function guardarUnidades() {
     document.getElementById('registro-combate').innerHTML = ''; 
     
     // ==========================================================
+    // NUEVA LÓGICA: CONDICIONAL DE BENDICIONES
+    // ==========================================================
+    // Antes de avanzar, ajustamos las opciones de Bendición para el siguiente paso
+    // (Esto debe hacerse independientemente de si el siguiente paso es 3 o 4)
+    gestionarSelectsBendicionesCondicional(); // <--- ¡AÑADIDO AQUÍ!
+    
+    
+    // ==========================================================
     // LÓGICA: Salto de Paso 3 si Gobernador ataca a Monstruo
     // ==========================================================
     
@@ -392,6 +400,62 @@ function guardarUnidades() {
     }
 
     avanzarPaso(siguientePaso);
+}
+
+// NUEVA FUNCIÓN: Lógica para ocultar Bendiciones no aplicables
+function gestionarSelectsBendicionesCondicional() {
+    const selectBen = document.getElementById('select-bendicion');
+    
+    // Asumiendo que ya tenemos atacante/defensor configurados en estadoCombate
+    const unidadBrujoDefensor = (estadoCombate.rolDefensor === 'Brujo') ? estadoCombate.defensor : estadoCombate.atacante;
+    const claseBrujo = unidadBrujoDefensor.clase;
+    
+    // Obtener todas las opciones (que deben haber sido llenadas previamente)
+    const opciones = Array.from(selectBen.options);
+    
+    // Mostrar todas las opciones al inicio (limpieza)
+    opciones.forEach(opt => opt.style.display = 'block');
+
+    // === Lógica de Ocultamiento ===
+    
+    // 1. Si el Brujo es Inmaterial (clase: "Inmaterial")
+    if (claseBrujo === 'Inmaterial') {
+        // Cántico Ferviente (Efecto: Impide Inmateriales)
+        const optCantico = opciones.find(opt => opt.value === 'Cántico Ferviente');
+        if (optCantico) {
+            optCantico.style.display = 'none';
+        }
+        
+        // Exorcismo (Efecto: Impide Inmateriales y Encarnados)
+        const optExorcismo = opciones.find(opt => opt.value === 'Exorcismo');
+        if (optExorcismo) {
+            optExorcismo.style.display = 'none';
+        }
+        
+        // Seleccionar "Ninguna" si la opción actual está oculta
+        if (selectBen.value === 'Cántico Ferviente' || selectBen.value === 'Exorcismo') {
+            selectBen.value = 'Ninguna';
+        }
+    } 
+    
+    // 2. Si el Brujo es Encarnado (clase: "Encarnado")
+    else if (claseBrujo === 'Encarnado') {
+        // Exorcismo (Efecto: Impide Inmateriales y Encarnados)
+        const optExorcismo = opciones.find(opt => opt.value === 'Exorcismo');
+        if (optExorcismo) {
+            optExorcismo.style.display = 'none';
+        }
+        
+        // Seleccionar "Ninguna" si la opción actual está oculta
+        if (selectBen.value === 'Exorcismo') {
+            selectBen.value = 'Ninguna';
+        }
+    }
+    
+    // Nota: Si es Monstruo, no se oculta nada.
+    
+    // (Opcional) Actualizar la visualización si hay alguna librería de UI que lo maneje.
+    // En JS vanilla, con el display: none es suficiente.
 }
 
 // PASO 3 (Lógica de Huida)
