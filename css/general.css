@@ -149,7 +149,7 @@ main#gobernador.combate h4 span, main#gobernador.juego h4 span {
 
 p {
     font-size: 1.5rem;
-    line-height: 2rem;
+    line-height: 1.7rem;
     letter-spacing: 1px;
 }
 .combate p span.rojo {

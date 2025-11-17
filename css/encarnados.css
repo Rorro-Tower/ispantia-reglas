@@ -136,7 +136,7 @@ section {
 .fila-debilitador {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     padding: 0.5em 0;
     border-bottom: 2px var(--en-rojo-osc) solid;
 }

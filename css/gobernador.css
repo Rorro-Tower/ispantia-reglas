@@ -123,6 +123,7 @@ section {
 
 .caja-potenciador .fila-debilitador p {
     color: var(--in-txt-osc);
+    text-align: left;
 }
 #gobernador.juego a {
     text-decoration: none;
@@ -145,7 +146,7 @@ section {
 .fila-debilitador {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     padding: 0.5em 0;
     border-bottom: 2px var(--go-cafe-osc) solid;
 }
@@ -196,6 +197,9 @@ section {
 }
 #gobernador.juego .caja-potenciador p {
     line-height: 1.5rem;
+}
+#gobernador.juego .caja-potenciador .fila-debilitador p {
+    text-align: left;
 }
 #gobernador.juego ul li {
     line-height: 2.5rem;
