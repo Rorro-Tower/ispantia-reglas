@@ -48,31 +48,29 @@
                                 <div class="col-12 casilla">
                                     <h4 class="potenciador ataque"><span>1</span> Turnos</h4>
                                     <div class="caja-potenciador">
-                                        <div class="fila-potenciador">
-                                            <ul>
-                                                <li>Cada jugador tiene 1 <span class="verde-osc">TURNO</span> para
-                                                    realizar 1 <span class="verde-osc">ACCIÓN</span>.</li>
-                                                <li>El <span class="verde-osc">TURNO</span> inicia con la <span
-                                                        class="verde-osc">ACCIÓN</span> de 1
-                                                    jugador y finaliza con la <span class="verde-osc">ACCIÓN</span>
-                                                    del otro jugador.</li>
-                                                <li>Siempre que finalice la <span class="verde-osc">ACCIÓN</span>, se
-                                                    recolectan los recursos (cultivos,
-                                                    familias asustadas, etc)</li>
-                                                <li>Si uno de los jugadores pierde 1 <span
-                                                        class="verde-osc">TURNO</span>, el otro jugador puede
-                                                    realizar 2 acciones seguidas.</li>
-                                                <li>Luego de un <span class="rojo">COMBATE</span>, los turnos se
-                                                    reinician.<br>Ejemplo: El Brujo hace <span
-                                                        class="verde-osc">APARECER</span> un Espectro en una
-                                                    casa.<br>El <span class="cafe">Gobernador</span> <span
-                                                        class="verde-osc">TRASLADA</span> a un
-                                                    Vigilante a esa casa.<br>Se
-                                                    inicia un <span class="rojo">COMBATE</span>.<br> Luego se retoman
-                                                    los turnos,
-                                                    correspondiéndole al Brujo iniciar su <span
-                                                        class="verde-osc">ACCIÓN</span>.</li>
-                                            </ul>
+                                        <div class="fila-debilitador">
+
+                                            <p class="num-debilitador">Cada jugador tiene 1 TURNO para
+                                                realizar 1 ACCIÓN.</p>
+                                            <p class="num-debilitador">El TURNO inicia con la ACCIÓN de 1
+                                                jugador y finaliza con la ACCIÓN
+                                                del otro jugador.</p>
+                                            <p class="num-debilitador">Siempre que finalice la ACCIÓN, se
+                                                recolectan los recursos (cultivos,
+                                                familias asustadas, etc)</p>
+                                            <p class="num-debilitador">Si uno de los jugadores pierde 1 TURNO, el
+                                                otro jugador puede
+                                                realizar 2 acciones seguidas.</p>
+                                            <p class="num-debilitador">Luego de un COMBATE, los
+                                                turnos se
+                                                reinician.<br>Ejemplo: El Brujo hace APARECER un Espectro en una
+                                                casa.<br>El Gobernador TRASLADA a un
+                                                Vigilante a esa casa.<br>Se
+                                                inicia un COMBATE.<br> Luego se
+                                                retoman
+                                                los turnos,
+                                                correspondiéndole al Brujo iniciar su ACCIÓN.</p>
+
                                         </div>
 
                                     </div>
@@ -82,71 +80,78 @@
                                 <div class="col-12 casilla">
                                     <h4 class="potenciador ataque" id="coincidencia"><span>2</span> Asustar</h4>
                                     <div class="caja-potenciador">
-                                        <div class="fila-potenciador">
-                                            <ul>
-                                                <li>Una vez que el <span class="morado">Brujo</span> tiene a su ESPECTRO
-                                                    en una casa, debe ordenarle que haga su trabajo, que es ASUSTAR a la
-                                                    familia para que genere recursos, que son productos de ese susto.
-                                                    La acción entonces es <span class="morado">ASUSTAR</span> e
-                                                    inmediatamente recolectar los recursos.
-                                                </li>
-                                                <li>El <span class="morado">Brujo</span> no puede <span
-                                                        class="morado">ASUSTAR</span> 2
-                                                    veces seguidas en una misma
-                                                    casa. </li>
-                                                <li>Luego de <span class="morado">ASUSTAR</span> en una casa y
-                                                    recolectar, debe moverse a la
-                                                    siguiente casa contigua. En otras palabras: si inicia en la 1, puede
-                                                    irse luego a
-                                                    la 2 y así sucesivamente.</li>
-                                                <li>Hay que tener en cuenta que los inmateriales solo pueden moverse de
-                                                    una casa contigua a otra. Al ser seres inmateriales, ese traslado no
-                                                    cuenta como <span class="verde-osc">ACCIÓN</span>, por lo tanto, los
-                                                    inmateriales pueden trasladarse de una casa a otra. </li>
-                                                <li>Ahora bien: el <span class="morado">Brujo</span> puede aprovechar
-                                                    esto como una ventaja y
-                                                    utilizar su siguiente <span class="verde-osc">ACCIÓN</span> no para
-                                                    ASUSTAR, sino para
-                                                    <span class="morado">CONJURAR</span> otro ser inmaterial,
-                                                    <span class="morado">MALDECIR</span> una casa o un cultivo.
-                                                </li>
-                                                <li>Si se realiza el <span class="rojo">COMBATE</span> y el Vigilante
-                                                    gana, el Espectro
-                                                    huye hacia su dimensión ectoplásmica, por lo cual el <span
-                                                        class="morado">Brujo</span> lo pierde
-                                                    como agente
-                                                    activo y se saca del juego.</li>
-                                                <li>Si el Espectro es el vencedor, el vigilante huye al castillo para
-                                                    reportar al <span class="cafe">Gobernador</span> lo sucedido,
-                                                    teniendo que volver a
-                                                    trasladarse a la aldea para continuar jugando, pero ese vigilante
-                                                    solo sale de la Aldea, NO del juego.</li>
-                                                <li>El <span class="morado">Brujo</span> no puede <span
-                                                        class="morado">APARECER</span> a un
-                                                    inmaterial en una casa que esté
-                                                    vigilada por un agente del <span class="cafe">Gobernador</span> que
-                                                    tenga un número mayor
-                                                    resultante de la suma de los atributos fijos que los del agente el
-                                                    <span class="morado">Brujo</span>. Ejemplo: Vigilante: Atributos
-                                                    Fijos = 3. Fantasma:
-                                                    Atributos Fijos = 3. Sí puede <span class="morado">APARECER</span>
-                                                    en esa casa.
-                                                </li>
-                                                <li>En otras palabras, el ser oscuro nunca querrá <span
-                                                        class="morado">APARECER</span> en una casa
-                                                    donde un agente del <span class="cafe">Gobernador</span> lo supere
-                                                    en atributos, porque lo
-                                                    coloca en una situación de desventaja frente al <span
-                                                        class="rojo">COMBATE</span>.</li>
-                                                <li>De esta forma el juego continúa con el <span
-                                                        class="morado">Brujo</span> intentando <span
-                                                        class="morado">ASUSTAR</span> a la
-                                                    mayor cantidad posible de aldeanos y con el <span
-                                                        class="cafe">Gobernador</span> espantando a
-                                                    estos seres inmateriales.
-                                                </li>
+                                        <div class="fila-debilitador">
 
-                                            </ul>
+                                            <p class="num-debilitador">Una vez que el Brujo
+                                                tiene a su ESPECTRO
+                                                en una casa, debe ordenarle que haga su trabajo, que es ASUSTAR
+                                                a la
+                                                familia para que genere recursos, que son productos de ese
+                                                susto.
+                                                La acción entonces es ASUSTAR e
+                                                inmediatamente recolectar los recursos.
+                                            </p>
+                                            <p class="num-debilitador">El Brujo no puede
+                                                ASUSTAR 2
+                                                veces seguidas en una misma
+                                                casa. </p>
+                                            <p class="num-debilitador">Luego de ASUSTAR
+                                                en una casa y
+                                                recolectar, debe moverse a la
+                                                siguiente casa contigua. En otras palabras: si inicia en la 1, puede
+                                                irse luego a
+                                                la 2 y así sucesivamente.</p>
+                                            <p class="num-debilitador">Hay que tener en cuenta que los inmateriales
+                                                solo pueden moverse de
+                                                una casa contigua a otra. Al ser seres inmateriales, ese traslado no
+                                                cuenta como ACCIÓN, por lo tanto, los
+                                                inmateriales pueden trasladarse de una casa a otra. </p>
+                                            <p class="num-debilitador">Ahora bien: el Brujo
+                                                puede aprovechar
+                                                esto como una ventaja y
+                                                utilizar su siguiente ACCIÓN no para
+                                                ASUSTAR, sino para
+                                                CONJURAR otro ser inmaterial,
+                                                MALDECIR una casa o un cultivo.
+                                            </p>
+                                            <p class="num-debilitador">Si se realiza el COMBATE y
+                                                el Vigilante
+                                                gana, el Espectro
+                                                huye hacia su dimensión ectoplásmica, por lo cual el Brujo lo pierde
+                                                como agente
+                                                activo y se saca del juego.</p>
+                                            <p class="num-debilitador">Si el Espectro es el vencedor, el vigilante
+                                                huye al castillo para
+                                                reportar al Gobernador lo sucedido,
+                                                teniendo que volver a
+                                                trasladarse a la aldea para continuar jugando, pero ese
+                                                vigilante
+                                                solo sale de la Aldea, NO del juego.</p>
+                                            <p class="num-debilitador">El Brujo no puede
+                                                APARECER a un
+                                                inmaterial en una casa que esté
+                                                vigilada por un agente del Gobernador que
+                                                tenga un número mayor
+                                                resultante de la suma de los atributos fijos que los del agente
+                                                el
+                                                Brujo. Ejemplo: Vigilante: Atributos
+                                                Fijos = 3. Fantasma:
+                                                Atributos Fijos = 3. Sí puede APARECER
+                                                en esa casa.
+                                            </p>
+                                            <p class="num-debilitador">En otras palabras, el ser oscuro nunca querrá
+                                                APARECER en una casa
+                                                donde un agente del Gobernador lo supere
+                                                en atributos, porque lo
+                                                coloca en una situación de desventaja frente al COMBATE.</p>
+                                            <p class="num-debilitador">De esta forma el juego continúa con el Brujo
+                                                intentando ASUSTAR a
+                                                la
+                                                mayor cantidad posible de aldeanos y con el Gobernador espantando a
+                                                estos seres inmateriales.
+                                            </p>
+
+
                                         </div>
 
                                     </div>
@@ -163,12 +168,13 @@
                                 <div class="col-12 casilla">
                                     <h4 class="potenciador ataque" id="coincidencia"><span>3</span> Encarnados</h4>
                                     <div class="caja-potenciador">
-                                        <div class="fila-potenciador">
-                                            <ul>
-                                                <li>A partir de los seres oscuros encarnados, los <span
-                                                        class="rojo">COMBATES</span> terminan con
-                                                    la muerte de alguna de las dos partes.</li>
-                                            </ul>
+                                        <div class="fila-debilitador">
+
+                                            <p class="num-debilitador">A partir de los seres oscuros encarnados, los
+                                                COMBATES terminan con
+                                                la muerte de alguna de las dos partes.
+                                            </p>
+
                                         </div>
 
                                     </div>
