@@ -178,9 +178,11 @@ section {
     line-height: 1.5rem;
 }
 #inmaterial.juego ul li {
-    line-height: 2.5rem;
+    line-height: 1.7rem;
     font-size: 1.5rem;
     letter-spacing: 1px;
+    margin-bottom: 1em;
+    list-style-image: url(../imagenes/vin-brujo.svg);
 
 }
 #inmaterial.juego .caja-potenciador ul li {
