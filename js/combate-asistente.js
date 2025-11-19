@@ -1061,6 +1061,6 @@ function finalizarCombate() {
 document.addEventListener('DOMContentLoaded', () => {
     llenarSelectsUnidades();
     llenarSelectsModificadores();
-    
+    cargarImagenHeaderAleatoria();
     mostrarPaso(1);
 });
