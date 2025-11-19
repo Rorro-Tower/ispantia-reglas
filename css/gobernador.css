@@ -212,11 +212,15 @@ section {
 #gobernador.juego .caja-potenciador ul li {
     color: var(--in-txt-osc);
     line-height: 1.7rem;
+    margin-bottom: 1em;
+    list-style-image: url(/imagenes/vin.svg);
 }
 #gobernador .fila-potenciador ul li {
     color: var(--in-txt-osc);
     font-size: 1.5rem;
-    line-height: 2rem;
+    line-height: 1.7rem;
+    margin-bottom: 1em;
+    list-style-image: url(/imagenes/vin.svg);
 }
 .caja-potenciador .num-potenciador.artilugio {
     background-color: var(--in-verde-claro);
