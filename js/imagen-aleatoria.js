@@ -7,7 +7,9 @@ function cargarImagenHeaderAleatoria() {
         'imagenes/combate/combate-1.jpg', // Asegúrate de que estas rutas sean correctas
         'imagenes/combate/combate-2.jpg',
         'imagenes/combate/combate-3.jpg',
-        'imagenes/combate/combate-4.jpg'
+        'imagenes/combate/combate-4.jpg',
+        'imagenes/combate/combate-5.jpg',
+        'imagenes/combate/combate-6.jpg'
     ];
 
     const imgElement = document.getElementById('imagen-header');
